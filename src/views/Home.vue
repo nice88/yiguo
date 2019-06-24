@@ -1,7 +1,9 @@
 <template>
-    <div>
+    <div class="allbody">
         <yg-index-header></yg-index-header>
-        <yg-index-content></yg-index-content>
+        <div class="content">
+            <yg-index-content></yg-index-content>
+        </div>       
         <yg-index-footer></yg-index-footer>
     </div>
 </template>
@@ -21,5 +23,14 @@ export default {
 </script>
 
 <style>
-
+.allbody{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+}
+.content{
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 </style>
