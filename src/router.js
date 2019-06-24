@@ -10,10 +10,10 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Index
+      redirect: '/yiguo'
     },
     {
-      path: '/Index',
+      path: '/yiguo',
       component: Index
     }
   ]

@@ -34,18 +34,18 @@
 <script>
 export default {
     name:"Footer",
-    mounted(){
-        let listDom = document.getElementsByClassName("list");
-        let spanDom =listDom.children[1];
-            for(let i=0;i<spanDom.length;i++){
-                spanDom[i].onclick=function(){
-                    spanDom[i].style.cssText=`
-                      color: #11b57c;  
-                    `
-                }
-            }
-    }
-}
+    // mounted(){
+    //     let listDom = document.getElementsByClassName("list");
+    //     let spanDom =listDom.children[1];
+    //         for(let i=0;i<spanDom.length;i++){
+    //             spanDom[i].onclick=function(){
+    //                 spanDom[i].style.cssText=`
+    //                   color: #11b57c;
+    //                 `
+    //             }
+    //         }
+    // }
+};
 </script>
 
 <style scoped>
