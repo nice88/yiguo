@@ -105,6 +105,9 @@ export default {
     right: -.2rem;
     transform: rotate(180deg);
 }
+.twoproduct{
+    overflow: hidden;
+}
 .twoproduct li {
     float: left;
     width: 50%;
