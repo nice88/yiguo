@@ -3,8 +3,7 @@
         <div class="footer-in">
            <a href="#" class="list">
                <i class="icon icon1"></i>
-                   <span>首页</span>
-               
+                   <span>首页</span>             
            </a>
             <a href="#" class="list">
                <i class="icon icon2"></i>
