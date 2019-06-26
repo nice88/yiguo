@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,58 +13,65 @@
     <meta name="referrer" content="no-referrer" />
     <title>yiguo</title>
     <style>
+=======
+>>>>>>> 481af6cf484092995fce427ccf5581cc49212c57
 
-        * {
-            margin: 0;
-            padding: 0;
-            outline: none;
-            -webkit-tap-highlight-color: rgba(0,0,0,0);
-        }
-    
-    </style>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but yiguo doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <link rel="stylesheet" href="./css/swiper.min.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <meta name="referrer" content="no-referrer" />
+  <link rel="stylesheet" href="./iconfont/iconfont.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yiguo</title>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but yiguo doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
 </html>
 <script src="./js/swiper.min.js"></script>
 <script>
-window.onload = function () {
-  let banner = new Swiper(".swiper-container", {
-    direction: "horizontal",
-    paginationClickable: true,
-    speed: 300,
-    loop: true,
-    observer: true,
-    observeParents: true,
-    autoplayDisableOnInteraction: false,
-    autoplay: {
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true
-    }
-  });
-  let banner2 = new Swiper(".swiper-container-news", {
-    direction: "vertical",
-    paginationClickable: true,
-    speed: 300,
-    loop: true,
-    observer: true,
-    observeParents: true,
-    autoplayDisableOnInteraction: false,
-    autoplay: {
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true
-    }
-  });
-}
+  window.onload = function () {
+    let banner = new Swiper(".swiper-container", {
+      direction: "horizontal",
+      paginationClickable: true,
+      speed: 300,
+      loop: true,
+      observer: true,
+      observeParents: true,
+      autoplayDisableOnInteraction: false,
+      autoplay: {
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      }
+    });
+    let banner2 = new Swiper(".swiper-container-news", {
+      direction: "vertical",
+      paginationClickable: true,
+      speed: 300,
+      loop: true,
+      observer: true,
+      observeParents: true,
+      autoplayDisableOnInteraction: false,
+      autoplay: {
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      }
+    });
+  }
 </script>
