@@ -4,7 +4,7 @@
             <a href="javascript:;" class="btn"></a>
             <span class="btn-search">请输入商品名称</span>
         </div>
-        <router-link class="first-screen-adress" to="./City1">
+        <router-link class="first-screen-adress" to="./City">
             北京
             <i class="arrow"></i>
         </router-link>

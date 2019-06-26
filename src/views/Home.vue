@@ -1,47 +1,18 @@
 <template>
-    <!-- <Loading v-if="flag"></Loading> -->
-    <div class="allbody">
-        <yg-index-header></yg-index-header>
-        <div class="content">
-            <yg-index-content></yg-index-content>
-        </div>
-        <yg-index-footer></yg-index-footer>
-    </div>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  </div>
 </template>
 
 <script>
-import Header from '../components/home/header'
-import Content from '../components/home/content'
-import Footer from '../components/common/footer.vue'
-export default {
-    name:"Index",
-    data(){
-        return{
-            flag:true
-        }
-    },
-    components:{
-       "yg-index-header" :Header,
-        "yg-index-content":Content,
-       "yg-index-footer": Footer
-    },
-    // mounted(){
-    //     setTimeout(()=>{
-    //         this.flag=false
-    //     },1000)
-    // }
-};
-</script>
+// @ is an alias to /src
+import HelloWorld from '@/components/HelloWorld.vue'
 
-<style>
-.allbody{
-    height:100%;
-    display: flex;
-    flex-direction: column;
+export default {
+  name: 'home',
+  components: {
+    HelloWorld
+  }
 }
-.content{
-    flex: 1;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-</style>
+</script>
