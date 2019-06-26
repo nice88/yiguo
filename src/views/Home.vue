@@ -1,5 +1,4 @@
 <template>
-    <!-- <Loading v-if="flag"></Loading> -->
     <div class="allbody">
         <yg-index-header></yg-index-header>
         <div class="content">
@@ -24,12 +23,7 @@ export default {
        "yg-index-header" :Header,
         "yg-index-content":Content,
        "yg-index-footer": Footer
-    },
-    // mounted(){
-    //     setTimeout(()=>{
-    //         this.flag=false
-    //     },1000)
-    // }
+    }
 };
 </script>
 
