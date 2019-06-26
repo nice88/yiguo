@@ -39,7 +39,7 @@ export default {
     data(){
         return{
             list:[
-            {   id:"12",
+            {
                 text:"水果楼层",
                 Imgnext:[
                       {
@@ -47,16 +47,14 @@ export default {
                             priceDown:"直降60元",
                             name:"佳沛新西兰阳光金果",
                             price:"¥228",
-                            num:"/4个",
-                           
+                            num:"/4个"
                         },
                         {
                             imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
                             priceDown:"直降60元",
                             name:"佳沛新西兰阳光金果",
                             price:"¥228",
-                             num:"/4个",
-                             
+                             num:"/4个"
                         },
                         {
                             imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
@@ -109,7 +107,6 @@ export default {
 }
 .twoproduct{
     overflow: hidden;
-    padding-bottom: .47rem;
 }
 .twoproduct li {
     float: left;

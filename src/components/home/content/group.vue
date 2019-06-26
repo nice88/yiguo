@@ -46,8 +46,8 @@ export default {
     name:"Group",
     data(){
         return{
-           list:[
-                {   
+            list:[
+                {
                     ImgBig:"https://img11.yiguoimg.com/d/items/2019/190621/9288738319214293_1125x652.jpg?w=1125&h=652",
                     Imgnext:[
                         {
@@ -209,12 +209,6 @@ export default {
     
 
 }
-.group-floor .proitem .pic .saletip{
-    position: absolute;
-    width: 100%;
-    height: .18rem;
-    bottom: 2px;
-}
 .group-floor .proitem .pic a{
     display: inline-block;
 }
@@ -273,7 +267,6 @@ export default {
     float: right;
     border-radius: 50%;
     background-color: #01b27a;
-    margin-right: 8px;
 }
 .proitem .name a {
     color: #333;
