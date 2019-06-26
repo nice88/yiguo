@@ -78,7 +78,7 @@ export default{
 		// 	// console.log(this.scrollTop);
 		// 	if (this.scrollTop > 20) {
 		// 		console.log(this.scrollTop);
-		//         this.goTopShow = !this.goTopShow;
+		//         this.goTopShow = true;
 		//       } else {
 		//         this.goTopShow = false;
 		//       }
