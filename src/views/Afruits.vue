@@ -89,7 +89,7 @@ export default{
 </script>
 
 <style scoped>
-.fruit{width: 100%;height: 100%;display: flex;flex-direction: column;}
+.fruit{width: 100%;height: 100%;display: flex;flex-direction: column;background: white;}
 .navbar{display: flex;height: .41rem;font-size: .13rem;border-bottom: .01rem solid #ccc;color: #808080;}
 .navbar>div{flex: 1;line-height: .41rem;text-align: center;}
 .active{border-bottom: .02rem solid #11B57C;color: #11B57C;}

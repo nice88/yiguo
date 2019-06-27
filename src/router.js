@@ -2,12 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import classify from './views/Lclassify'
 import Index from './views/Home'
-<<<<<<< HEAD
 import Product from './views/Afruits.vue'
-=======
+import Afree from './views/Afree.vue'
 import Shop from './views/Shop'
 import Shopaddress from './components/shop/shopaddress'
->>>>>>> 481af6cf484092995fce427ccf5581cc49212c57
 
 Vue.use(Router)
 
@@ -23,10 +21,15 @@ export default new Router({
       component: Index
     },
     {
-<<<<<<< HEAD
       path: '/product',
       component: Product
-=======
+    },
+    {
+      path: '/afree',
+      component: Afree
+    },
+    {
+
       path: '/L',
       component: classify
     },
@@ -37,7 +40,6 @@ export default new Router({
     {
       path: "/shopaddress",
       component: Shopaddress
->>>>>>> 481af6cf484092995fce427ccf5581cc49212c57
     }
 
   ]
