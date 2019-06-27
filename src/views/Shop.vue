@@ -1,5 +1,5 @@
 <template>
-  <div calss="Shop">
+  <div class="Shop">
     <div class="Sfirst">
       全场满100元包邮,还差
       <span>100</span>元包邮
@@ -84,8 +84,8 @@ export default {
 };
 </script>
 
-<style>
-body {
+<style scoped>
+.Shop {
   background: #f4f4f4;
 }
 .rightBox {

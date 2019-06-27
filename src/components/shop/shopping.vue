@@ -53,7 +53,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .shopping {
   background: #fff;
   overflow: hidden;
@@ -75,11 +75,6 @@ export default {
   background: #fff;
   float: left;
 }
-/* .shop-bottom1 {
-  width: 1.5rem;
-  height: 2.08rem;
-  margin-left: 0.22rem;
-} */
 .shop-img img {
   width: 1.5rem;
   height: 1.4rem;
