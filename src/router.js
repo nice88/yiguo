@@ -6,7 +6,8 @@ import Product from './views/Afruits.vue'
 import Afree from './views/Afree.vue'
 import Shop from './views/Shop'
 import Shopaddress from './components/shop/shopaddress'
-
+//支付方式
+import Lcheckstand from './views/Lcheckstand'
 Vue.use(Router)
 
 export default new Router({
@@ -40,7 +41,10 @@ export default new Router({
     {
       path: "/shopaddress",
       component: Shopaddress
+    },
+    {
+      path: "/checkstand",
+      component: Lcheckstand
     }
-
   ]
 })

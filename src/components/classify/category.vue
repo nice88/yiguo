@@ -1,7 +1,6 @@
 <template>
     <div class="category">
         <ul>
-            aaa
             <li
                     :class="activeClass == index ? 'active':''"
                     :key="index"

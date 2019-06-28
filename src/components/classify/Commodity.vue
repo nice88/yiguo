@@ -3,8 +3,7 @@
         <li>
             <div>
                 <a href="">
-                    <img src="../../../public/img/L1.jpg" alt="LAL">
-                    全部
+                    <!--<img src="../../../public/img/L1.jpg" alt="LAL">-->
                 </a>
             </div>
         </li>
