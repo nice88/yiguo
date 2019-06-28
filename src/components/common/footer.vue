@@ -1,7 +1,7 @@
 <template>
     <div class="footer">
         <div class="footer-in">
-           <router-link class="list" to="./Index">
+           <router-link class="list" to="/yiguo">
                <i class="icon icon1"></i>
                    <span>首页</span>             
            </router-link>

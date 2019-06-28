@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import classify from './views/Lclassify'
 import Index from './views/Home'
+import City from "./views/City"
+import More from "./views/More"
 import Shop from './views/Shop'
 import Noshop from './views/Noshop'
 import Shopaddress from './components/shop/shopaddress'
