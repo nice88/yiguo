@@ -1,6 +1,6 @@
 <template>
   <div class="shopaddress">
-    <div class="address">
+    <div class="address" @click.prevent="nihao">
       <div class="address1">
         <img src="../../assets/img/shopimg/add4.png" alt>
         <p>添加收货地址</p>
@@ -40,6 +40,42 @@
       <span>优惠券</span>
       <p></p>
     </div>
+    <div class="address5">
+      <div class="div">
+        <div class="address51">
+          <span>商品合计</span>
+          <p>￥1000</p>
+        </div>
+        <div class="address51">
+          <span>运费</span>
+          <img src="../../assets/img/shopimg/mianyou.png" alt>
+          <p>￥0.00</p>
+        </div>
+      </div>
+      <div class="address51 top">
+        <span>应付金额</span>
+        <p>￥1000</p>
+      </div>
+    </div>
+    <div class="address4">
+      <span>U币抵现</span>
+      <span class="span">
+        可用100U币抵￥1000
+        <i>￥0</i>
+      </span>
+      <img class="img" src="../../assets/img/shopimg/off.png" alt>
+    </div>
+    <div class="address4 bottom">
+      <span>现金券</span>
+      <p></p>
+    </div>
+    <div class="address6">
+      <p class="price">
+        应付金额：
+        <span class="red">¥414.00</span>
+      </p>
+      <a href="javascript:;">结算</a>
+    </div>
   </div>
 </template>
 <script>
@@ -62,11 +98,16 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    nihao() {
+      this.$router.push({ path: "/region" });
+    }
   }
 };
 </script>
-<style>
-body {
+<style scoped>
+.shopaddress {
   background: #f4f4f4;
 }
 .address {
@@ -227,6 +268,7 @@ body {
   background: #fff;
   line-height: 0.41rem;
   position: relative;
+  margin-bottom: 10px;
 }
 .address4 span {
   font-size: 0.14rem;
@@ -244,5 +286,92 @@ body {
   position: absolute;
   top: 10px;
   right: 11px;
+}
+.address5 {
+  width: 100%;
+  background: #fff;
+  margin-bottom: 0.09rem;
+}
+.div {
+  padding-top: 20px;
+  border-bottom: 1px solid #999;
+  height: 1rem;
+}
+.address51 {
+  font-size: 0.12rem;
+  padding-left: 0.1rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  position: relative;
+}
+.address51 span {
+  color: #808080;
+  float: left;
+}
+.address51 img {
+  position: absolute;
+  top: 10px;
+  width: 70px;
+  height: 20px;
+  right: 70px;
+}
+.address51 p {
+  color: #333333;
+  float: right;
+  margin-right: 30px;
+}
+.top span {
+  color: #333;
+}
+.top p {
+  color: #333;
+}
+.address4 .span {
+  font-size: 0.11rem;
+  color: #333;
+  float: right;
+  margin-right: 0.7rem;
+}
+.address4 .span i {
+  color: #ff6353;
+  font-style: normal;
+  vertical-align: baseline;
+}
+.address4 .img {
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+.address6 {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  background: #fff;
+  font-size: 15px;
+}
+.address6 .price {
+  float: left;
+  margin-left: 1.22rem;
+}
+.address6 .price span {
+  color: #fb3d3d;
+}
+.address6 a {
+  float: right;
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  line-height: 0.5rem;
+  background: #fb3d3d;
+  border: 0;
+  color: #fff;
+}
+.bottom {
+  margin-bottom: 0.6rem;
 }
 </style>

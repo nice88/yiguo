@@ -3,6 +3,8 @@
         <Search></Search>
         <Classify></Classify>
         <Footer></Footer>
+        <div></div>
+
     </div>
 </template>
 
@@ -11,6 +13,7 @@
     import Search from"../components/classify/Search"
     import Classify from'../components/classify/classification'
     import Footer from '../components/common/footer'
+
     export default {
         name: "Lclassify",
         components:{

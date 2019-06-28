@@ -27,7 +27,7 @@ export default {
         {
           img:
             "https://img14.yiguoimg.com/d/items/2017/171130/9288715872871294_300.jpg",
-          h2: "原膳南美白虾仁（中）250g gwqertyuiouytredsdfghj",
+          h2: "原膳南美白虾仁（中）250g",
           qian: "32.90"
         },
         {
@@ -53,21 +53,20 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .shopping {
   background: #fff;
   overflow: hidden;
   margin-bottom: 1rem;
 }
 .shopping h2 {
-  font-size: 0.12rem;
+  font-size: 0.15rem;
   text-align: center;
   font-weight: 300;
   position: relative;
   height: 0.4rem;
   line-height: 0.4rem;
   color: #000;
-  text-align: center;
 }
 .shop-bottom {
   width: 50%;
@@ -75,11 +74,6 @@ export default {
   background: #fff;
   float: left;
 }
-/* .shop-bottom1 {
-  width: 1.5rem;
-  height: 2.08rem;
-  margin-left: 0.22rem;
-} */
 .shop-img img {
   width: 1.5rem;
   height: 1.4rem;
