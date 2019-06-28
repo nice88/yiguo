@@ -72,6 +72,14 @@ export default new Router({
     {
       path: '/food',
       component: Food
-    }
+    },
+    {
+      path: '/City',
+      component:City
+    },
+    {
+      path: '/More',
+      component:More
+    },
   ]
 })

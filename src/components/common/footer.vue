@@ -1,51 +1,48 @@
 <template>
     <div class="footer">
         <div class="footer-in">
-           <a href="#" class="list">
+           <router-link class="list" to="./Index">
                <i class="icon icon1"></i>
-                   <span>首页</span>
-               
-           </a>
-            <a href="#" class="list">
+                   <span>首页</span>             
+           </router-link>
+            <router-link class="list" to="./Lclassify">
                <i class="icon icon2"></i>
                    <span>分类</span>
               
-           </a>
-            <a href="#" class="list">
+           </router-link>
+            <router-link class="list" to="./Afruits">
                <i class="icon icon3"></i>
                    <span>吃饭吧</span>
               
-           </a>
-            <a href="#" class="list">
+           </router-link>
+            <router-link class="list" to="./Shop">
                <i class="icon icon4"></i>
                    <b></b>
                    <span>购物车</span>
               
-           </a>
-            <a href="#" class="list">
+           </router-link>
+            <router-link class="list" to="./Mine">
                <i class="icon icon5"></i>
                    <span>我的易果</span>
               
-           </a>
+           </router-link>
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
     name:"Footer",
-    // mounted(){
-    //     let listDom = document.getElementsByClassName("list");
-    //     let spanDom =listDom.children[1];
-    //         for(let i=0;i<spanDom.length;i++){
-    //             spanDom[i].onclick=function(){
-    //                 spanDom[i].style.cssText=`
-    //                   color: #11b57c;
-    //                 `
-    //             }
-    //         }
-    // }
-};
+   data(){
+       return{
+           num:0
+       }
+   },
+   created() {
+   
+}
+}
 </script>
 
 <style scoped>
