@@ -1,8 +1,6 @@
 <template>
 	<div class="new">
-		<div class="one">
-			<img src="https://img09.yiguoimg.com/d/items/2019/190329/9288737670506109_1125x652.jpg">
-		</div>
+		<Active><img src="https://img09.yiguoimg.com/d/items/2019/190329/9288737670506109_1125x652.jpg"></Active>
 		<div class="shops">
 			<div class="two">
 				<img src="https://img14.yiguoimg.com/d/items/2019/190304/9288737492739684_1125x160.jpg">
@@ -50,10 +48,12 @@
 
 <script>
 import Back from '../components/common/back.vue'
+import Active from '../components/common/acitve.vue'
 export default{
 	name:'Anews',
 	components:{
-		Back
+		Back,
+		Active
 	},
 	data(){
 		return{
@@ -150,8 +150,6 @@ export default{
 
 <style scoped>
 .new{width: 100%;height: 100%;overflow-y: scroll;background: white;}
-.one{width: 100%;height: 2.17rem;}
-.one>img{width: 100%;height: 2.17rem;}
 .two{width: 100%;height: .53rem;}
 .two>img{width: 100%;height: .53rem;}
 .shop{width: 100%;height: 100%;padding: 0 .07rem .06rem;}

@@ -18,42 +18,42 @@ export default {
                 {   
                     listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
                     listText:"精品水果",
-                    path:''
+                    path:'/product'
                 },
                  {
                     listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
                     listText:"精品水果",
-                     path:''
+                     path:'/product'
                 },
                  {
                     listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
                     listText:"精品水果",
-                     path:''
+                     path:'/product'
                 },
                  {
                     listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
                     listText:"精品水果",
-                     path:''
+                     path:'/product'
                 },
                  {
                     listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
                     listText:"精品水果",
-                     path:''
+                     path:'/free'
                 },
                  {
                     listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
                     listText:"精品水果",
-                     path:''
+                     path:'/free'
                 },
                  {
                     listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
                     listText:"精品水果",
-                     path:''
+                     path:'/free'
                 },
                  {
                     listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
                     listText:"精品水果",
-                     path:''
+                     path:'/free'
                 }
             ]
         }

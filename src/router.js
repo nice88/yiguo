@@ -12,6 +12,7 @@ import Region from './components/shop/region'
 import Product from './views/Afruits.vue'
 import Free from './views/Afree.vue'
 import News from './views/Anews.vue'
+import Food from './views/Afood.vue'
 
 
 Vue.use(Router)
@@ -67,6 +68,10 @@ export default new Router({
     {
       path: '/news',
       component: News
+    },
+    {
+      path: '/food',
+      component: Food
     }
   ]
 })

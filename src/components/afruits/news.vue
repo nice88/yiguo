@@ -68,6 +68,16 @@ export default{
 					pri:'29.9',
 					pre:'59',
 					weight:'1kg/箱'
+				},
+				{
+					id:'06',
+					src:'https://img13.yiguoimg.com/d/items/2019/190428/9288737869342364_300.jpg',
+					nm:'海南妃子笑荔枝1kg',
+					del:'晶莹饱满 入口鲜甜多汁',
+					redu:'直降29.1元',
+					pri:'29.9',
+					pre:'59',
+					weight:'1kg/箱'
 				}
 			]
 		}

@@ -6,7 +6,7 @@
 		<component :is="page"></component>
 		<div class="car">
 			<span class="iconfont icon-gouwuchekong"></span>
-			<span v-show="goTopShow" @click="dian()" class="iconfont icon-xiangshangjiantou"></span>
+			<span class="iconfont icon-xiangshangjiantou" v-show="goTopShow" @click=""></span>
 		</div>
 	</div>
 </template>
@@ -15,14 +15,14 @@ s
 import Sales from '../components/afruits/sales.vue'
 import News from '../components/afruits/news.vue'
 import Price from '../components/afruits/price.vue'
-
+let timer =null;
 export default{
 	name:'Afruits',
 	data(){
 		return{
 			page:'Sales',
 			activeClass: 0,
-			scrollTop: '',
+			scrollTop: "",
       		goTopShow: false,
 			nav:[{title:"销量"},{title:"新品"},{title:"价格",span:"iconfont icon-shangxiasanjiao"}]
 		}
@@ -32,7 +32,6 @@ export default{
 		News,
 		Price
 	},
-
 	methods: {
 	    handlePage(index){
 	      	var comName = "";
@@ -50,39 +49,46 @@ export default{
       		this.page = comName;
       		this.activeClass = index;
       	},
-     //  	handleScroll() {
-	    //   this.scrollTop = document.getElementsByClassName('box')[0].scrollTop;
-	    //   console.log(this.scrollTop)
-	    // },
-	//     goTop() {
-	//       let timer = null,
-	//         _that = this;
-	//       cancelAnimationFrame(timer);
-	//       timer = requestAnimationFrame(function fn() {
-	//         if (_that.scrollTop > 0) {
-	//           _that.scrollTop -= 50;
-	//           document.body.scrollTop = document.documentElement.scrollTop =
-	//             _that.scrollTop;
-	//           timer = requestAnimationFrame(fn);
-	//         } else {
-	//           cancelAnimationFrame(timer);
-	//           _that.goTopShow = false;
-	//         }
-	//       });
-	//     }
+      	handleScroll() {
+	      this.scrollTop =
+	        window.pageYOffset ||
+	        document.documentElement.scrollTop ||
+	        document.body.scrollTop;
+	      if (this.scrollTop > 500) {
+	        this.goTopShow = true;
+	      }
+	    },
+	    goTop() {
+	      let timer = null,
+	        _that = this;
+	      cancelAnimationFrame(timer);
+	      timer = requestAnimationFrame(function fn() {
+	        if (_that.scrollTop > 0) {
+	          _that.scrollTop -= 50;
+	          document.body.scrollTop = document.documentElement.scrollTop =
+	            _that.scrollTop;
+	          timer = requestAnimationFrame(fn);
+	        } else {
+	          cancelAnimationFrame(timer);
+	          _that.goTopShow = false;
+	        }
+	      });
+	    }
 	},
-	mounted(){
-		// window.addEventListener("scroll", this.handleScroll);
-		// setInterval(function(){
-		// 	this.scrollTop = document.getElementsByClassName('box')[0].scrollTop;
-		// 	// console.log(this.scrollTop);
-		// 	if (this.scrollTop > 20) {
-		// 		console.log(this.scrollTop);
-		//         this.goTopShow = !this.goTopShow;
-		//       } else {
-		//         this.goTopShow = false;
-		//       }
-		//   },1000)
+	watch: {
+	    scrollTop(val) {
+	      if (this.scrollTop > 500) {
+	        this.goTopShow = true;
+	      } else {
+	        this.goTopShow = false;
+	      }
+	    }
+	},
+	mounted() {
+	    window.addEventListener("scroll", this.handleScroll);
+	},
+	destroyed() {
+	    window.removeEventListener("scroll", this.handleScroll);
 	}
 
 };
