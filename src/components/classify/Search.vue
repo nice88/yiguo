@@ -2,7 +2,7 @@
     <div class="search">
         <form action="." class="search-left">
             <i class="iconss"></i>
-            <input class="searchs" type="search" placeholder="请输入商品名称爱爱">
+            <input class="searchs" type="search" placeholder="请输入商品名称">
         </form>
         <span>搜索</span>
     </div>
