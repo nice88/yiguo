@@ -8,6 +8,9 @@ import Shopaddress from './components/shop/shopaddress'
 import Receivinggoods from './components/shop/receivinggoods'
 import Region from './components/shop/region'
 import Product from './views/Afruits.vue'
+import Free from './views/Afree.vue'
+import News from './views/Anews.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -48,6 +51,14 @@ export default new Router({
     {
       path: '/product',
       component: Product
+    },
+    {
+      path: '/free',
+      component: Free
+    },
+    {
+      path: '/news',
+      component: News
     }
   ]
 })
