@@ -62,7 +62,7 @@ export default {
         {
           png:
             "https://img11.yiguoimg.com/d/items/2019/190424/9288737842669208_300.jpg",
-          span: "云南精品夏黑葡萄1kg",
+          span: "傻逼马兴1kg",
           qian: "49.90",
           ico: "&#xe644"
         },
