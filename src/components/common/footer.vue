@@ -5,23 +5,23 @@
                <i class="icon icon1"></i>
                    <span>首页</span>             
            </router-link>
-            <router-link class="list" to="./Lclassify">
+            <router-link class="list" to="/L">
                <i class="icon icon2"></i>
                    <span>分类</span>
               
            </router-link>
-            <router-link class="list" to="./Afruits">
+            <router-link class="list" to="/free">
                <i class="icon icon3"></i>
                    <span>吃饭吧</span>
               
            </router-link>
-            <router-link class="list" to="./Shop">
+            <router-link class="list" to="/shop">
                <i class="icon icon4"></i>
                    <b></b>
                    <span>购物车</span>
               
            </router-link>
-            <router-link class="list" to="./Mine">
+            <router-link class="list" to="/product">
                <i class="icon icon5"></i>
                    <span>我的易果</span>
               

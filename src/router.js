@@ -47,7 +47,6 @@ export default new Router({
       component: Shopaddress
     },
     {
-
       path: "/checkstand",
       component: Lcheckstand
     },
