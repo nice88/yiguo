@@ -24,17 +24,17 @@
                         </p>
                         <div class="price">
                             <strong>{{items.price}}</strong>
-                            <i class="price-addcart" @click="addToShopCar"></i>
+                            <i class="price-addcart"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <router-link class="more" to="./More">
+        <a href="#" class="more">
                 <p class="hot">查看更多
                 <i></i>
                 </p>
-        </router-link>
+        </a>
      </div>
         
     </div>
@@ -44,7 +44,7 @@
 <script>
 export default {
     name:"Group",
-    data(){     
+    data(){
         return{
             list:[
                 {
@@ -160,26 +160,8 @@ export default {
                     ]  
                 }
 
-            ],
-            goodsinfo:{
-                id:"1"
-            },
-            selectedCount:"0" //保存用户选中的数量
+            ]
         }
-    },
-   
-    methods:{
-        addToShopCar(){
-        //{id:商品的id,count:要购买的数量，price:商品的价格，selected:false}
-        //拼接出一个要保存到store 中car数组中 商品信息对象
-          var goodsinfo ={
-              id:this.goodsinfo.id,
-              count:this.selectedCount,
-              price:this.goodsinfo.sell_price
-          };
-          //调用store中的mutations来将商品加入购物车中
-          this.$store.commit("addToCar",goodsinfo)
-        }     
     }
 }
 </script>
