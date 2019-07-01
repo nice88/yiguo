@@ -41,7 +41,11 @@ export default new Router({
     },
     {
       path: "/shopaddress",
-      component: Shopaddress
+      component: Shopaddress,
+      // children:{
+      //   path:"组件名",
+      //   component:渲染的组件名
+      // }
     },
     {
 
