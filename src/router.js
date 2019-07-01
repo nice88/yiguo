@@ -5,14 +5,11 @@ import Index from './views/Home'
 import Shop from './views/Shop'
 import Noshop from './views/Noshop'
 import Shopaddress from './components/shop/shopaddress'
-//支付方式
-import Lcheckstand from './views/Lcheckstand'
 import Receivinggoods from './components/shop/receivinggoods'
 import Region from './components/shop/region'
 import Product from './views/Afruits.vue'
 import Free from './views/Afree.vue'
 import News from './views/Anews.vue'
-
 
 Vue.use(Router)
 
@@ -46,11 +43,6 @@ export default new Router({
       //   path:"组件名",
       //   component:渲染的组件名
       // }
-    },
-    {
-
-      path: "/checkstand",
-      component: Lcheckstand
     },
     {
       path: "/region",

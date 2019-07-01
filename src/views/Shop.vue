@@ -7,7 +7,13 @@
     <div class="shopp">
       <div class="Ssecond" v-for="(item,index) in shop">
         <div class="roadio">
-          <input type="checkbox">
+          <input
+            type="checkbox"
+            class="checkItem"
+            :id="'check'+index"
+            name="checkbox"
+            v-model="checkeds[index]"
+          >
         </div>
         <img :src="item.png">
         <div class="Ssecond1">
@@ -19,12 +25,12 @@
         </div>
         <div class="rightBox">
           <div class="del">
-            <i class="iconfont" v-html="item.ico"></i>
+            <i class="iconfont" @click="del(index)">&#xe644;</i>
           </div>
           <div class="num">
-            <span>-</span>
-            <input type="text" value="1">
-            <span>+</span>
+            <span @click="minius(index)">-</span>
+            <input type="text" :value="item.increases">
+            <span @click="add(index)">+</span>
           </div>
         </div>
       </div>
@@ -32,29 +38,33 @@
     <shopping></shopping>
     <div class="shop-right">
       <div class="shop-rigth1">
-        <input type="checkbox">
+        <input type="checkbox" @click="checkAll($event)" id="quan">
         <span>全选</span>
       </div>
       <div class="shop-right2">
         <p>
           合计(不含运费)：
-          <b class="red">￥59.70</b>
+          <b>{{sum}}</b>
         </p>
         <span>已优惠: ￥0.00</span>
       </div>
       <div class="shop-rigth3">
-        <a href="#" @click.prevent="dianji">去结算(1)</a>
+        <a href="#" @click.prevent="dianji">{{"去结算("+number+")"}}</a>
       </div>
     </div>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import shopping from "../components/shop/shopping";
+import Footer from "../components/common/footer";
+
 export default {
   name: "Shop",
   components: {
-    shopping
+    shopping,
+    Footer
   },
   data() {
     return {
@@ -64,26 +74,96 @@ export default {
             "https://img11.yiguoimg.com/d/items/2019/190424/9288737842669208_300.jpg",
           span: "云南精品夏黑葡萄1kg",
           qian: "49.90",
-          ico: "&#xe644"
+          increases: "1"
         },
         {
           png:
             "https://img11.yiguoimg.com/d/items/2019/190424/9288737842669208_300.jpg",
           span: "云南精品",
           qian: "1000",
-          ico: "&#xe644"
+          increases: "1"
         }
-      ]
+      ],
+      checkeds: [],
+      //    created(){
+      //     this.pageDate()
+      // },
+      // methods:{
+
+      //     pageDate(){
+
+      //     fetch('http://121.199.63.71:8004/mine/', {
+      //           method: 'get'
+      //         }).then(response => response.json()).then(data => {
+      //            console.log(data);
+      //            this.car=data;
+      //         //    console.log(this.car)
+      //         })
+
+      //     }
+      // },
     };
   },
   methods: {
     dianji() {
       this.$router.push({ path: "/shopaddress" });
+      this.Observer.$emit("handle", this.number, this.sum);
+    },
+    // 删除,
+    del(index) {
+      this.shop.splice(index, 1); //只需要从数组中移除对应项.
+    },
+    // 增加
+    add(index) {
+      this.shop[index].increases++;
+    },
+    // 减少
+    minius(index) {
+      if (this.shop[index].increases > 1) {
+        //这里添加一个限制，最少要有一个商品
+        this.shop[index].increases--;
+      }
+    },
+    checkAll(e) {
+      // 点击全选事件函数
+      var checkObj = document.querySelectorAll(".checkItem"); // 获取所有checkbox项
+      if (e.target.checked) {
+        // 判定全选checkbox的勾选状态
+        for (var i = 0; i < checkObj.length; i++) {
+          if (!checkObj[i].checked) {
+            // 将未勾选的checkbox选项push到绑定数组中
+            this.checkeds.push(checkObj[i].value);
+          }
+        }
+      } else {
+        // 如果是去掉全选则清空checkbox选项绑定数组
+        this.checkeds = [];
+      }
+    }
+  },
+  computed: {
+    sum: function() {
+      let sum = 0;
+      for (let i in this.shop) {
+        if (this.checkeds[i]) {
+          sum += this.shop[i].qian * this.shop[i].increases;
+        }
+      }
+      return sum;
+    },
+
+    number: function() {
+      let number = 0;
+      for (let i in this.shop) {
+        if (this.checkeds[i]) {
+          number += parseInt(this.shop[i].increases);
+        }
+      }
+      return number;
     }
   }
 };
 </script>
-
 <style scoped>
 .Shop {
   background: #f4f4f4;
