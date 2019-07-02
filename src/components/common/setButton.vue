@@ -1,7 +1,7 @@
 <template>
 <div class="dialog">
       <!--外层的遮罩 点击事件用来关闭弹窗，isShow控制弹窗显示 隐藏的props-->
-      <div class="dialog-cover back"  v-if="isShow">
+      <div class="dialog-cover back" >
         <div class="dialog-content">
           <p>加入购物车成功</p>
         </div>
@@ -15,7 +15,6 @@
 <script>
 
 export default {
-  props: ["isShow"],
   created () {
     console.log()
   },

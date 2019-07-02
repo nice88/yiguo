@@ -2,10 +2,8 @@
      <div class="banner">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><a href="#"><img src="https://img14.yiguoimg.com/d/items/2019/190524/9288738094655160_1125x652.jpg?w=1125&h=652" /></a></div>
-                <div class="swiper-slide"><a href="#"><img src="https://img14.yiguoimg.com/d/items/2019/190524/9288738094655160_1125x652.jpg?w=1125&h=652" /></a></div>
-                <div class="swiper-slide"><a href="#"><img src="https://img12.yiguoimg.com/d/items/2019/190620/9288738306664148_1125x652.jpg?w=1125&h=652" alt=""></a></div>
-                <div class="swiper-slide"><a href="#"><img src="https://img10.yiguoimg.com/d/items/2019/190522/9288738071291574_1125x652.jpg?w=1125&h=652" alt=""></a></div>
+                <div class="swiper-slide" v-for="item in data_wheel" :key="item.id"><a href="#"><img :src="item.img" /></a></div>
+               
             </div>
             <!-- 如果需要分页器 -->
             <div class="swiper-pagination"></div>
@@ -14,9 +12,22 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
     name:"Banner",
-
+    data(){
+        return{
+        data_wheel:[]
+        }
+    },
+  mounted(){
+     axios.get("http://localhost:3000/api/data").then((res)=>{
+            var msg = res.data.msg;
+            if(msg==="ok"){
+                this.data_wheel = res.data.data_wheel;
+            }
+        });
+    }
 }
 </script>
 

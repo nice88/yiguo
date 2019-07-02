@@ -7,6 +7,7 @@ import More from "./views/More"
 import Shop from './views/Shop'
 import Noshop from './views/Noshop'
 import Shopaddress from './components/shop/shopaddress'
+import Mine from './views/Mine'
 //支付方式
 import Lcheckstand from './views/Lcheckstand'
 import Receivinggoods from './components/shop/receivinggoods'
@@ -81,6 +82,10 @@ export default new Router({
     {
       path: '/More',
       component:More
+    },
+    {
+      path: '/Mine',
+      component:Mine
     },
   ]
 })

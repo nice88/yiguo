@@ -1,5 +1,6 @@
 <template>
-  <div class="Shop">
+<div>
+   <div class="Shop">
     <div class="Sfirst">
       全场满100元包邮,还差
       <span>100</span>元包邮
@@ -47,14 +48,18 @@
       </div>
     </div>
   </div>
+<yg-shop-footer></yg-shop-footer>
+</div>
 </template>
 
 <script>
 import shopping from "../components/shop/shopping";
+import Footer from '../components/common/footer'
 export default {
   name: "Shop",
   components: {
-    shopping
+    shopping,
+    "yg-shop-footer":Footer
   },
   data() {
     return {
