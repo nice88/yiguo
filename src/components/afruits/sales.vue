@@ -1,6 +1,6 @@
 <template>
 	<div class="box">
-		<div class="pro" v-for="item in details" :key="item.id">
+		<div class="pro" v-for="item in details" :key="item.id" @click="todel()">
 			<div class="img"><img :src="item.src"></div>
 			<div class="detail">
 				<h3>{{item.nm}}</h3>
@@ -73,6 +73,11 @@ export default{
 			scrollTop:''
 		}
 	},
+	methods:{
+		todel(){
+			this.$router.push('/details')
+		}
+	},
 	mounted(){
 		this.scrollTop = document.getElementsByClassName('box')[0].scrollTop;
 	}
@@ -80,7 +85,7 @@ export default{
 </script>
 
 <style scoped>
-.box{flex: 1;overflow-y: scroll;overflow-x: hidden;}
+.box{flex: 1;overflow-y: scroll;overflow-x: hidden;margin-top: .41rem;}
 .pro{height: 1.39rem;width: 100%;padding: .18rem .1rem;display: flex;border-bottom: .01rem solid #ccc;font-size: .12rem;}
 .img>img{width: 1.14rem;}
 .detail{height: 100%;width: 100%;}

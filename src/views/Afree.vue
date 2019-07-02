@@ -1,6 +1,6 @@
 <template>
 	<div class="free">
-		<div  v-for="(item,index) in picture" :key="item.id">
+		<div v-for="(item,index) in picture" :key="item.id">
 			<div class="one">
 				<img :src="item.one">
 			</div>
@@ -21,7 +21,7 @@
 			</div>
 			<div class="card">
 				<ul>
-					<li v-for="item in del" :key="item.id">
+					<li v-for="item in del" :key="item.id" @click="to()">
 						<div class="prod">
 							<div class="proimg">
 								<img :src="item.src">
@@ -101,12 +101,17 @@ export default{
 				}
 			]
 		}
+	},
+	methods:{
+		to(){
+			this.$router.push('/details');
+		}
 	}
 };
 </script>
 
 <style scoped>
-.free{width: 100%;height: 100%;overflow-y: scroll;background: white;}
+.free{width: 100%;overflow-y: scroll;background: white;}
 .one{width: 100%;height: 4.33rem;}
 .one>img{width: 100%;height: 4.33rem;}
 .two{width: 100%;height: 4.04rem;}

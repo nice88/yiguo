@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import classify from './views/Lclassify'
 import Index from './views/Home'
+import City from "./views/City"
+import More from "./views/More"
 import Shop from './views/Shop'
 import Noshop from './views/Noshop'
 import Shopaddress from './components/shop/shopaddress'
@@ -14,6 +16,9 @@ import Free from './views/Afree.vue'
 import News from './views/Anews.vue'
 import Food from './views/Afood.vue'
 
+import details from './components/details/details'
+import eat from './components/eat/eat'
+import appraise from './components/appraise/appraise'
 
 Vue.use(Router)
 
@@ -72,6 +77,26 @@ export default new Router({
     {
       path: '/food',
       component: Food
-    }
+    },
+    {
+      path: '/City',
+      component:City
+    },
+    {
+      path: '/More',
+      component:More
+    },
+    {
+      path: '/details',
+      component:details
+    },
+    {
+      path: '/eat',
+      component:eat
+    },
+    {
+      path: '/appraise',
+      component:appraise
+    },
   ]
 })

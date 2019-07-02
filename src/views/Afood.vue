@@ -6,7 +6,7 @@
 			<div class="two">
 				<img src="https://img14.yiguoimg.com/d/items/2019/190304/9288737493493348_1125x160.jpg">
 			</div>
-			<div class="sell" v-for="item in sell" :key="item.id">
+			<div class="sell" v-for="item in sell" :key="item.id" @click="to()">
 				<div class="simg">
 					<img :src="item.src">
 				</div>
@@ -24,7 +24,7 @@
 				<img src="https://img11.yiguoimg.com/d/items/2019/190304/9288737493526116_1125x160.jpg">
 			</div>
 			<ul class="box">
-				<li v-for="item in delicious" :key="item.id">
+				<li v-for="item in delicious" :key="item.id" @click="to()">
 					<div class="bpic">
 						<img :src="item.src">
 						<span>{{item.del}}</span>
@@ -32,7 +32,7 @@
 					<div class="bdel">
 						<p class="name">{{item.nm}}</p>
 						<p class="bpri"><b>¥{{item.pri}}</b>{{item.weight}}</p>
-						<span class="iconfont icon-gouwuche"></span>
+						<router-link to="/shop"><span class="iconfont icon-gouwuche"></span></router-link>
 					</div>
 				</li>
 			</ul>
@@ -128,11 +128,16 @@ export default{
 			]
 		}
 	},
+	methods:{
+		to(){
+			this.$router.push('/details');
+		}
+	}
 };
 </script>
 
 <style scoped>
-.food{width: 100%;height: 100%;overflow-y: scroll;background: white;}
+.food{width: 100%;overflow-y: scroll;background: white;}
 .two{width: 100%;height: .53rem;}
 .two>img{width: 100%;height: .53rem;}
 .sell{width: 100%;height: 1.55rem;padding: .09rem;display: flex;font-size: .12rem;}

@@ -1,12 +1,12 @@
 <template>
 	<div class="fruit">
 		<div class="navbar">
-			<div :class="activeClass == index ? 'active':''" v-for="(item,index) in nav" @click="handlePage(index)">{{item.title}}<span v-if="item.span" :class="item.span"></span></div>
+			<div :class="activeClass == index ? 'aactive':''" v-for="(item,index) in nav" @click="handlePage(index)">{{item.title}}<span v-if="item.span" :class="item.span"></span></div>
 		</div>
 		<component :is="page"></component>
 		<div class="car">
 			<span class="iconfont icon-gouwuchekong"></span>
-			<span class="iconfont icon-xiangshangjiantou" v-show="goTopShow" @click=""></span>
+			<span class="iconfont icon-xiangshangjiantou" v-show="goTopShow" @click="goTop"></span>
 		</div>
 	</div>
 </template>
@@ -15,7 +15,6 @@ s
 import Sales from '../components/afruits/sales.vue'
 import News from '../components/afruits/news.vue'
 import Price from '../components/afruits/price.vue'
-let timer =null;
 export default{
 	name:'Afruits',
 	data(){
@@ -54,7 +53,8 @@ export default{
 	        window.pageYOffset ||
 	        document.documentElement.scrollTop ||
 	        document.body.scrollTop;
-	      if (this.scrollTop > 500) {
+	        console.log(this.scrollTop)
+	      if (this.scrollTop > 60) {
 	        this.goTopShow = true;
 	      }
 	    },
@@ -76,8 +76,8 @@ export default{
 	    }
 	},
 	watch: {
-	    scrollTop(val) {
-	      if (this.scrollTop > 500) {
+	    scrollTop:function(val){
+	      if (this.scrollTop > 60) {
 	        this.goTopShow = true;
 	      } else {
 	        this.goTopShow = false;
@@ -95,10 +95,10 @@ export default{
 </script>
 
 <style scoped>
-.fruit{width: 100%;height: 100%;display: flex;flex-direction: column;}
-.navbar{display: flex;height: .41rem;font-size: .13rem;border-bottom: .01rem solid #ccc;color: #808080;}
+.fruit{width: 100%;}
+.navbar{display: flex;height: .41rem;font-size: .13rem;border-bottom: .01rem solid #ccc;color: #808080;position: fixed;left: 0;top: 0;width: 100%;background: #fff;}
 .navbar>div{flex: 1;line-height: .41rem;text-align: center;}
-.active{border-bottom: .02rem solid #11B57C;color: #11B57C;}
+.aactive{border-bottom: .02rem solid #11B57C;color: #11B57C;}
 .navbar>div>span{font-size: .12rem;}
 .car>span{position: fixed;right: .15rem;bottom: .85rem;background: #7f7f7f;color: white;width: .35rem;height: .35rem;line-height:.35rem;text-align:center;font-size: .2rem;border-radius: .05rem;opacity: .7;}
 .car>span:last-child{bottom: .25rem;background: #f8f8f8;color: #7f7f7f;}

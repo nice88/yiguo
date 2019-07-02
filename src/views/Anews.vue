@@ -7,7 +7,7 @@
 			</div>
 			<div class="shop">
 				<ul>
-					<li v-for="item in everyday" :key='item.id'>
+					<li v-for="item in everyday" :key='item.id' @click="to()">
 						<div class="simg">
 							<img :src="item.src">
 							<p><span>{{item.act}}</span></p>
@@ -26,7 +26,7 @@
 			</div>
 			<div class="shop">
 				<ul>
-					<li v-for="item in everyday" :key='item.id'>
+					<li v-for="item in everyday" :key='item.id' @click="to()">
 						<div class="simg">
 							<img :src="item.src">
 							<p><span>{{item.act}}</span></p>
@@ -143,6 +143,11 @@ export default{
 					pri:'79'
 				},
 			]
+		}
+	},
+	methods:{
+		to(){
+			this.$router.push('/details');
 		}
 	}
 };
