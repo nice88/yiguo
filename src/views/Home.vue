@@ -4,7 +4,7 @@
         <yg-index-header></yg-index-header>
         <div class="content">
             <yg-index-content></yg-index-content>
-        </div>       
+        </div>
         <yg-index-footer></yg-index-footer>
         <massageBox/>
     </div>
@@ -13,13 +13,23 @@
 <script>
 import Header from '../components/home/header'
 import Content from '../components/home/content'
+<<<<<<< HEAD
 import Footer from '../components/common/footer'
 import massageBox from '../components/JS/MessageBox'
+=======
+import Footer from '../components/common/footer.vue'
+>>>>>>> 1aa1bfb95d2f85fa91202fa8d5e1ee3a66649bb1
 export default {
     name:"Index",
+    data(){
+        return{
+            flag:true
+        }
+    },
     components:{
        "yg-index-header" :Header,
         "yg-index-content":Content,
+<<<<<<< HEAD
        "yg-index-footer": Footer,
        massageBox
     },
@@ -50,6 +60,11 @@ export default {
        
     // }
 }
+=======
+       "yg-index-footer": Footer
+    }
+};
+>>>>>>> 1aa1bfb95d2f85fa91202fa8d5e1ee3a66649bb1
 </script>
 
 <style scoped>

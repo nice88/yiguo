@@ -25,17 +25,17 @@
                         </p>
                         <div class="price">
                             <strong>{{items.price}}</strong>
-                            <i class="price-addcart" @click="addToShopCar"></i>
+                            <i class="price-addcart"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <router-link class="more" to="./More">
+        <a href="#" class="more">
                 <p class="hot">查看更多
                 <i></i>
                 </p>
-        </router-link>
+        </a>
      </div>
         
     </div>
@@ -56,7 +56,7 @@
 export default {
   
     name:"Group",
-    data(){     
+    data(){
         return{
             // list:[
             //     {
@@ -172,6 +172,7 @@ export default {
             //         ]  
             //     }
 
+<<<<<<< HEAD
             // ],
        
             data_chosen:[],
@@ -206,6 +207,10 @@ export default {
                 this.data_chosen = res.data.data_chosen;
             }
         });
+=======
+            ]
+        }
+>>>>>>> 1aa1bfb95d2f85fa91202fa8d5e1ee3a66649bb1
     }
 }
 </script>

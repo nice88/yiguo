@@ -2,6 +2,7 @@
     <div class="footer">
        
         <div class="footer-in">
+<<<<<<< HEAD
            <router-link class="list" to="/yiguo">
                <i class="icon icon1" ></i>
                    <span>首页</span>             
@@ -12,26 +13,45 @@
               
            </router-link>
             <router-link class="list" to="/eat">
+=======
+           <a href="#" class="list">
+               <i class="icon icon1"></i>
+                   <span>首页</span>
+               
+           </a>
+            <a href="#" class="list">
+               <i class="icon icon2"></i>
+                   <span>分类</span>
+              
+           </a>
+            <a href="#" class="list">
+>>>>>>> 1aa1bfb95d2f85fa91202fa8d5e1ee3a66649bb1
                <i class="icon icon3"></i>
                    <span>吃饭吧</span>
               
-           </router-link>
-            <router-link class="list" to="/shop">
+           </a>
+            <a href="#" class="list">
                <i class="icon icon4"></i>
                    <b v-if='isShow'>{{msg}}</b>
                    <span>购物车</span>
               
+<<<<<<< HEAD
            </router-link>
             <router-link class="list" to="/Mine">
+=======
+           </a>
+            <a href="#" class="list">
+>>>>>>> 1aa1bfb95d2f85fa91202fa8d5e1ee3a66649bb1
                <i class="icon icon5"></i>
                    <span>我的易果</span>
               
-           </router-link>
+           </a>
         </div>
     </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import Bus from '../../../Bus'
 export default {
     name:"Footer",
@@ -68,6 +88,22 @@ export default {
        
     }
 }
+=======
+export default {
+    name:"Footer",
+    // mounted(){
+    //     let listDom = document.getElementsByClassName("list");
+    //     let spanDom =listDom.children[1];
+    //         for(let i=0;i<spanDom.length;i++){
+    //             spanDom[i].onclick=function(){
+    //                 spanDom[i].style.cssText=`
+    //                   color: #11b57c;
+    //                 `
+    //             }
+    //         }
+    // }
+};
+>>>>>>> 1aa1bfb95d2f85fa91202fa8d5e1ee3a66649bb1
 </script>
 
 <style scoped>

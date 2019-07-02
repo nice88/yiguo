@@ -25,6 +25,8 @@
         methods:{
             getItem(index){
                 this.activeClass = index;
+                this.$emit('info',index)
+                console.log(index);
             }
         }
     }

@@ -10,10 +10,10 @@
     <div class="address2">
       <p class="num">
         共
-        <span>2</span>件商品
+        <span>{{number}}</span>件商品
       </p>
       <div class="img">
-        <img :src="(item.png)" alt v-for="(item,index) in img">
+        <img :src="(item.png)" alt v-for="(item,index) in img" :key="index">
       </div>
     </div>
     <div class="address3">
@@ -44,7 +44,7 @@
       <div class="div">
         <div class="address51">
           <span>商品合计</span>
-          <p>￥1000</p>
+          <p>￥123</p>
         </div>
         <div class="address51">
           <span>运费</span>
@@ -60,7 +60,7 @@
     <div class="address4">
       <span>U币抵现</span>
       <span class="span">
-        可用100U币抵￥1000
+        可用100U币抵￥100
         <i>￥0</i>
       </span>
       <img class="img" src="../../assets/img/shopimg/off.png" alt>
@@ -102,6 +102,12 @@ export default {
   methods: {
     nihao() {
       this.$router.push({ path: "/region" });
+    },
+    created() {
+      this.Observer.$on("handle", val => {
+        console.log(this.number);
+        console.log(this.sum);
+      });
     }
   }
 };

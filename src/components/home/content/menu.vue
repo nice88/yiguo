@@ -15,6 +15,7 @@ export default {
     name:"Menu",
     data(){
         return{
+<<<<<<< HEAD
             // list:[
             //     {   
             //         listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
@@ -64,6 +65,50 @@ export default {
     //     "trackid": 1001
     //   },
             data_nav:[]
+=======
+            list:[
+                {   
+                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
+                    listText:"精品水果",
+                    path:''
+                },
+                 {
+                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
+                    listText:"精品水果",
+                     path:''
+                },
+                 {
+                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
+                    listText:"精品水果",
+                     path:''
+                },
+                 {
+                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
+                    listText:"精品水果",
+                     path:''
+                },
+                 {
+                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
+                    listText:"精品水果",
+                     path:''
+                },
+                 {
+                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
+                    listText:"精品水果",
+                     path:''
+                },
+                 {
+                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
+                    listText:"精品水果",
+                     path:''
+                },
+                 {
+                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
+                    listText:"精品水果",
+                     path:''
+                }
+            ]
+>>>>>>> 1aa1bfb95d2f85fa91202fa8d5e1ee3a66649bb1
         }
     },
     mounted(){
