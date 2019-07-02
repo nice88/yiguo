@@ -1,19 +1,20 @@
 <template>
 <div>
-    <div class="group-floor" v-for="item in list">
+    
+    <div class="group-floor" v-for="item in data_chosen" :key="item.id">
         <a href="#" class="floor-img">
-            <img :src="item.ImgBig" alt="">
+            <img :src="item.img" alt="">
         </a>
         <div class="slip">
-            <div class="product-list clear noFloorImg" v-for="items in (item.Imgnext)">
+            <div class="product-list clear noFloorImg" v-for="items in (item.listimg)" :key="items.id">
                 <div class="product-list-in" >
                     <div class="proitem">
                         <div class="pic">
                             <a href="#">
-                                <img :src="items.imgsmall" alt="">
+                                <img :src="items.goods_img" alt="">
                             </a>
                             <div class="saletip">
-                                <span>{{items.priceDown}}</span>
+                                <span>原价{{items.marketprice}}</span>
                             </div>
                         </div>
                     <div class="info">
@@ -40,128 +41,176 @@
     </div>
 </div>
 </template>
-
+        //      "id": 1,
+        // "img": "http://www.meiliwan.com/images/201606/source_img/271_P_1466492075764.jpg",
+        // "listimg": [
+        //   {
+        //     "detail_name": "Zespri品牌  酸甜适口",
+        //     "goods_img": "http://img11.yiguoimg.com/d/items/2019/190505/9288737923966629_500.jpg",
+        //     "id": 225,
+        //     "marketprice": 214.8,
+        //     "name": "Zespri新西兰绿奇异果3.3kg原箱(25-27个)",
+        //     "price": 179
 <script>
+  import Bus from '../../../../Bus'
 export default {
+  
     name:"Group",
     data(){
         return{
-            list:[
-                {
-                    ImgBig:"https://img11.yiguoimg.com/d/items/2019/190621/9288738319214293_1125x652.jpg?w=1125&h=652",
-                    Imgnext:[
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                         {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
+            // list:[
+            //     {
+            //         ImgBig:"https://img11.yiguoimg.com/d/items/2019/190621/9288738319214293_1125x652.jpg?w=1125&h=652",
+            //         Imgnext:[
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //              {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
 
-                    ]
+            //         ]
                         
                     
-                },
-                 {
-                    ImgBig:"https://img14.yiguoimg.com/d/items/2019/190619/9288738297259731_1125x652.jpg?w=1125&h=652",
-                    Imgnext:[
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                         {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
+            //     },
+            //      {
+            //         ImgBig:"https://img14.yiguoimg.com/d/items/2019/190619/9288738297259731_1125x652.jpg?w=1125&h=652",
+            //         Imgnext:[
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //              {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
 
-                    ]
+            //         ]
                         
                     
-                },
-                   {
-                    ImgBig:"https://img09.yiguoimg.com/d/items/2019/190428/9288737873110684_1125x652.jpg?w=1125&h=652",
-                    Imgnext:[
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                         {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228"
-                        },
+            //     },
+            //        {
+            //         ImgBig:"https://img09.yiguoimg.com/d/items/2019/190428/9288737873110684_1125x652.jpg?w=1125&h=652",
+            //         Imgnext:[
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //              {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
+            //             {
+            //                 imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
+            //                 priceDown:"直降60元",
+            //                 name:"佳沛新西兰阳光金果",
+            //                 price:"¥228"
+            //             },
 
-                    ]  
-                }
+            //         ]  
+            //     }
 
+<<<<<<< HEAD
+            // ],
+       
+            data_chosen:[],
+            
+            goodsinfo:{
+                id:"1"
+            },
+            selectedCount:1 //保存用户选中的数量
+        }
+    },
+   
+    methods:{
+        addToShopCar(){
+        //{id:商品的id,count:要购买的数量，price:商品的价格，selected:false}
+        //拼接出一个要保存到store 中car数组中 商品信息对象
+          var goodsinfo ={
+              id:this.goodsinfo.id,
+              count:this.selectedCount,
+              price:this.goodsinfo.sell_price
+          };
+          //调用store中的mutations来将商品加入购物车中
+          this.$store.commit('city/addToCar',goodsinfo)
+          this.$store.commit('city/addNum')
+          var selectedCount =this.selectedCount++
+          Bus.$emit("toFood",selectedCount)
+        }     
+    },
+    mounted(){
+     this.axios.get("http://localhost:3000/api/data").then((res)=>{
+            var msg = res.data.msg;
+            if(msg==="ok"){
+                this.data_chosen = res.data.data_chosen;
+            }
+        });
+=======
             ]
         }
+>>>>>>> 1aa1bfb95d2f85fa91202fa8d5e1ee3a66649bb1
     }
 }
 </script>

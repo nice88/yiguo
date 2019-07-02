@@ -1,8 +1,10 @@
 <template>
     <div class="two-image clear">
-        <router-link class="link-img1" v-for="item in list" :to="item.path" tag='div'>
+        <div class="link-img1" v-for="item in list">
+            <a href="#">
                 <img :src="item.Img" alt="">
-        </router-link>
+            </a>
+        </div>
     </div>
 </template>
 
@@ -14,13 +16,12 @@ export default {
             list:[
                 {
                     Img:"https://img13.yiguoimg.com/d/items/2019/190329/9288737670473341_658x819.jpg?w=658&h=819",
-                    path:'/news'
 
                 },
                  {
-                    Img:"https://img12.yiguoimg.com/d/items/2019/190304/9288737491986020_658x819.jpg?w=658&h=819",
-                    path:'/food'
+                    Img:"https://img12.yiguoimg.com/d/items/2019/190304/9288737491986020_658x819.jpg?w=658&h=819",             
                 }
+                
             ]
         }
     }

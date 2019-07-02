@@ -3,7 +3,7 @@
         <div class="fixedOpt" id="fixedOpt">
             <div class="fixedOpt_l">
                <button class="btn">
-                   <i class="icon icon-back "></i>
+                   <i class="icon icon-back " @click="handleToBack" ></i>
                 </button>
             </div>
             <div class="fixedOpt_r">
@@ -58,6 +58,11 @@ export default {
         ]
       }
         
+    },
+    methods:{
+    handleToBack(){
+            this.$router.back();
+        }
     }
 }
 </script>
