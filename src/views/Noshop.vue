@@ -34,14 +34,17 @@
         <a href="#" @click.prevent="dianji">去结算(1)</a>
       </div>
     </div>
+    <Footer/>
   </div>
 </template>
 <script>
 import shopping from "../components/shop/shopping";
+import Footer from "../components/common/footer";
 export default {
   name: "noshop",
   components: {
-    shopping
+    shopping,
+    Footer
   }
 };
 </script>

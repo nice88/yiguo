@@ -11,13 +11,13 @@
           {{item.dizhi}}
         </div>
         <div class="region3">
-          <input type="checkbox">
+          <input type="radio" name="a" />
         </div>
       </div>
 
       <div class="region4">
         <div class="region5">
-          <input type="checkbox">
+          <input type="radio" name="b" />
           <span>{{item.moren}}</span>
         </div>
         <div class="region6">

@@ -2,7 +2,7 @@
   <div class="shopaddress">
     <div class="address" @click.prevent="nihao">
       <div class="address1">
-        <img src="../../assets/img/shopimg/add4.png" alt>
+        <img src="../../assets/img/shopimg/add4.png" alt />
         <p>添加收货地址</p>
         <span></span>
       </div>
@@ -10,17 +10,19 @@
     <div class="address2">
       <p class="num">
         共
-        <span>{{number}}</span>件商品
+        <span>123</span>件商品
       </p>
       <div class="img">
-        <img :src="(item.png)" alt v-for="(item,index) in img" :key="index">
+        <a href="#" v-for="(item,index) in img" :key="index">
+          <img :src="(item.png)" />
+        </a>
       </div>
     </div>
     <div class="address3">
       <div class="address-top">
         <span>配送日期</span>
         <p>
-          收货地址不支持配送
+          即可下单,即刻发货
           <span class="span"></span>
         </p>
       </div>
@@ -33,7 +35,7 @@
       </div>
       <div class="addressmd">
         <span class="word">留言：</span>
-        <input type="text" placeholder="如有特殊要求，请在此留言">
+        <input type="text" placeholder="如有特殊要求，请在此留言" />
       </div>
     </div>
     <div class="address4">
@@ -48,7 +50,7 @@
         </div>
         <div class="address51">
           <span>运费</span>
-          <img src="../../assets/img/shopimg/mianyou.png" alt>
+          <img src="../../assets/img/shopimg/mianyou.png" alt />
           <p>￥0.00</p>
         </div>
       </div>
@@ -63,7 +65,9 @@
         可用100U币抵￥100
         <i>￥0</i>
       </span>
-      <img class="img" src="../../assets/img/shopimg/off.png" alt>
+      <div class="right">
+        <mt-switch v-model="value"></mt-switch>
+      </div>
     </div>
     <div class="address4 bottom">
       <span>现金券</span>
@@ -74,7 +78,7 @@
         应付金额：
         <span class="red">¥414.00</span>
       </p>
-      <a href="javascript:;">结算</a>
+      <a href="javascript">结算</a>
     </div>
   </div>
 </template>
@@ -103,11 +107,8 @@ export default {
     nihao() {
       this.$router.push({ path: "/region" });
     },
-    created() {
-      this.Observer.$on("handle", val => {
-        console.log(this.number);
-        console.log(this.sum);
-      });
+    openPicker() {
+      this.$refs.picker.open();
     }
   }
 };
@@ -343,12 +344,10 @@ export default {
   font-style: normal;
   vertical-align: baseline;
 }
-.address4 .img {
-  width: 40px;
-  height: 30px;
+.address4 .right {
   position: absolute;
-  right: 20px;
-  top: 10px;
+  right: 10px;
+  top: 6px;
 }
 .address6 {
   position: fixed;

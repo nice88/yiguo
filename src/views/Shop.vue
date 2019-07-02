@@ -170,7 +170,7 @@ export default {
 }
 .rightBox {
   float: right;
-  width: 1.1rem;
+  width: 1rem;
   height: 1rem;
 }
 .Sfirst {

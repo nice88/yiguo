@@ -1,6 +1,6 @@
 <template>
   <div class="receivinggood">
-    <div class="receivinggoods">
+    <div class="receivinggoods" v-cloak>
       <ul>
         <li>
           <span>收件人姓名：</span>
@@ -62,6 +62,9 @@ export default {
 };
 </script>
 <style  scoped>
+[v-cloak] {
+  display: none;
+}
 .receivinggood {
   background: #f4f4f4;
   width: 100%;
