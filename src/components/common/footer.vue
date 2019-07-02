@@ -2,17 +2,25 @@
     <div class="footer">
         <div class="footer-in">
            <router-link class="list" to="/yiguo">
+<<<<<<< HEAD
                <i class="icon icon1" ></i>
+=======
+               <i class="icon icon1"></i>
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
                    <span>首页</span>             
            </router-link>
             <router-link class="list" to="/L" >
                <i class="icon icon2"></i>
                    <span>分类</span>
+<<<<<<< HEAD
               
+=======
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
            </router-link>
             <router-link class="list" to="/eat">
                <i class="icon icon3"></i>
                    <span>吃饭吧</span>
+<<<<<<< HEAD
               
            </router-link>
             <router-link class="list" to="/shop">
@@ -20,17 +28,29 @@
                    <b>{{this.$router.getters}}</b>
                    <span>购物车</span>
               
+=======
+            </router-link>
+            <router-link class="list" to="/shop">
+               <i class="icon icon4"></i>
+                <b v-if='isShow'>{{msg}}</b>
+                <span>购物车</span>
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
            </router-link>
             <router-link class="list" to="/Mine">
                <i class="icon icon5"></i>
                    <span>我的易果</span>
+<<<<<<< HEAD
               
            </router-link>
+=======
+            </router-link>
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
         </div>
     </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 
 export default {
     name:"Footer",
@@ -45,6 +65,56 @@ export default {
         
     }
 }
+=======
+import Bus from '../../../Bus'
+export default {
+    name:"Footer",
+   data(){
+       return{
+           num:0,
+           msg:0,
+           isShow:false,
+       
+       }
+       
+   },
+    creat(){
+        
+    },
+   mounted(){
+       let _this =this
+       Bus.$on("toFood",function(data){
+        _this.msg = data
+          _this.isShow=true
+          _this.issetButton = true
+         })
+   },
+    computed:{
+       getAllCount(){
+            return  this.$store.getters.getAllCount;
+       },
+        car() {
+            return this.$store.state.car
+       },
+       
+    }
+}
+export default {
+    name:"Footer",
+    // mounted(){
+    //     let listDom = document.getElementsByClassName("list");
+    //     let spanDom =listDom.children[1];
+    //         for(let i=0;i<spanDom.length;i++){
+    //             spanDom[i].onclick=function(){
+    //                 spanDom[i].style.cssText=`
+    //                   color: #11b57c;
+    //                 `
+    //             }
+    //         }
+    // }
+};
+
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
 </script>
 
 <style scoped>
@@ -52,7 +122,7 @@ export default {
     z-index: 99;
     box-sizing: border-box;
     width: 100%;
-    height: .46rem;
+    height: .48rem;
     padding: 0 11px;
     background: #fff;
     position: fixed;
@@ -77,7 +147,11 @@ export default {
 .footer-in .list b {
       position: absolute;
     right: 19px;
+<<<<<<< HEAD
     top: 0px;
+=======
+    top: 5px;
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
     display: block;
     width: 14px;
     height: 14px;
@@ -134,11 +208,11 @@ export default {
     left:.21rem;
     width: .3rem;
     height: .21rem;
-    top:3px;
+    top:6px;
 }
 .footer-in a  span{
     position: relative;
-    margin-top:.25rem;
+    margin-top:.27rem;
     display: inline-block;
 }
 </style>

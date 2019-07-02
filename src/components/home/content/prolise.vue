@@ -122,6 +122,7 @@ export default {
 }
 .prolistBackground{
     width:100%;
+    padding-bottom: .47rem;
 }
 .prolistBackground .floor-img, .group-floor .floor-img img {
     width: 100%;

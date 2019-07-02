@@ -5,6 +5,13 @@ import Index from './views/Home'
 import Shop from './views/Shop'
 import Noshop from './views/Noshop'
 import Shopaddress from './components/shop/shopaddress'
+
+import details from './components/details/details'
+import eat from './components/eat/eat'
+import appraise from './components/appraise/appraise'
+
+
+import Mine from './views/Mine'
 //支付方式
 import Lcheckstand from './views/Lcheckstand'
 import Receivinggoods from './components/shop/receivinggoods'
@@ -12,6 +19,7 @@ import Region from './components/shop/region'
 import Product from './views/Afruits.vue'
 import Free from './views/Afree.vue'
 import News from './views/Anews.vue'
+<<<<<<< HEAD
 import Food from './views/Afood.vue'
 
 // 我的开始
@@ -33,6 +41,9 @@ import Helpcenter from './components/helpcenter/helpcenter.vue'
 import Return from './components/return/return.vue'
 import Addaddress from'./views/Maddresspage.vue'
 // 我的结束
+=======
+
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
 Vue.use(Router)
 
 export default new Router({
@@ -61,12 +72,11 @@ export default new Router({
     },
     {
       path: "/shopaddress",
-      component: Shopaddress
-    },
-    {
-
-      path: "/checkstand",
-      component: Lcheckstand
+      component: Shopaddress,
+      // children:{
+      //   path:"组件名",
+      //   component:渲染的组件名
+      // }
     },
     {
       path: "/region",
@@ -92,6 +102,7 @@ export default new Router({
       path: '/food',
       component: Food
     },
+<<<<<<< HEAD
     // 我的开始
 
     {
@@ -163,5 +174,31 @@ export default new Router({
       component: Addaddress
     }
     // 我的结束
+=======
+    {
+      path: '/City',
+      component:City
+    },
+    {
+      path: '/More',
+      component:More
+    },
+    {
+      path:'/details',
+      component:details
+    },
+    {
+      path:'/eat',
+      component:eat
+    },
+    {
+      path:'/appraise',
+      component:appraise
+    },
+    {
+      path: '/Mine',
+      component:Mine
+    },
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
   ]
 })
