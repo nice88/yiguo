@@ -10,7 +10,7 @@
                    <span>分类</span>
               
            </router-link>
-            <router-link class="list" to="/free">
+            <router-link class="list" to="/eat">
                <i class="icon icon3"></i>
                    <span>吃饭吧</span>
               

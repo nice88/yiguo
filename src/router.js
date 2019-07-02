@@ -7,6 +7,9 @@ import More from "./views/More"
 import Shop from './views/Shop'
 import Noshop from './views/Noshop'
 import Shopaddress from './components/shop/shopaddress'
+import details from './components/details/details'
+import eat from './components/eat/eat'
+import appraise from './components/appraise/appraise'
 //支付方式
 import Lcheckstand from './views/Lcheckstand'
 import Receivinggoods from './components/shop/receivinggoods'
@@ -82,5 +85,17 @@ export default new Router({
       path: '/More',
       component:More
     },
+    {
+      path:'/details',
+      component:details
+    },
+    {
+      path:'/eat',
+      component:eat
+    },
+    {
+      path:'/appraise',
+      component:appraise
+    }
   ]
 })
