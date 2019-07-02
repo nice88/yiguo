@@ -6,12 +6,17 @@
         <ul>
             <li v-for="item in list" style="padding-left:10px">{{item.message}}<i></i></li>
         </ul>
+        <router-link to="/Mine"
+        tag="div"
+         class="over">
+            <span>退出登录</span>
+        </router-link>
     </div>
 </template>
 
 <script>
 export default { 
- name:'set',
+ name:'sett',
     data(){
         return {
             list:[
@@ -74,5 +79,18 @@ export default {
     float:right;
     padding-right: .28rem;
     color: #11b57c;
+}
+.over span{
+    width: 35%;
+    height: .35rem;
+    display: block;
+    text-align: center;
+    line-height: .35rem;
+    font-size: 15px;
+    color:  #11b57c;
+    border-radius: 3px;
+    border: 1px solid #11b57c;
+    margin: 0 auto;
+    margin-top: 1.42rem;
 }
 </style>

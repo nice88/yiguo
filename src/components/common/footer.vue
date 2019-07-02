@@ -1,37 +1,104 @@
 <template>
     <div class="footer">
         <div class="footer-in">
-           <a href="#" class="list">
+           <router-link class="list" to="/yiguo">
+<<<<<<< HEAD
+               <i class="icon icon1" ></i>
+=======
                <i class="icon icon1"></i>
-                   <span>首页</span>
-               
-           </a>
-            <a href="#" class="list">
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
+                   <span>首页</span>             
+           </router-link>
+            <router-link class="list" to="/L" >
                <i class="icon icon2"></i>
                    <span>分类</span>
+<<<<<<< HEAD
               
-           </a>
-            <a href="#" class="list">
+=======
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
+           </router-link>
+            <router-link class="list" to="/eat">
                <i class="icon icon3"></i>
                    <span>吃饭吧</span>
+<<<<<<< HEAD
               
-           </a>
-            <a href="#" class="list">
+           </router-link>
+            <router-link class="list" to="/shop">
                <i class="icon icon4"></i>
-                   <b></b>
+                   <b>{{this.$router.getters}}</b>
                    <span>购物车</span>
               
-           </a>
-            <a href="#" class="list">
+=======
+            </router-link>
+            <router-link class="list" to="/shop">
+               <i class="icon icon4"></i>
+                <b v-if='isShow'>{{msg}}</b>
+                <span>购物车</span>
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
+           </router-link>
+            <router-link class="list" to="/Mine">
                <i class="icon icon5"></i>
                    <span>我的易果</span>
+<<<<<<< HEAD
               
-           </a>
+           </router-link>
+=======
+            </router-link>
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
         </div>
     </div>
 </template>
 
 <script>
+<<<<<<< HEAD
+
+export default {
+    name:"Footer",
+   data(){
+       return{
+           num:0,
+        
+       }
+       
+   },
+    methods:{
+        
+    }
+}
+=======
+import Bus from '../../../Bus'
+export default {
+    name:"Footer",
+   data(){
+       return{
+           num:0,
+           msg:0,
+           isShow:false,
+       
+       }
+       
+   },
+    creat(){
+        
+    },
+   mounted(){
+       let _this =this
+       Bus.$on("toFood",function(data){
+        _this.msg = data
+          _this.isShow=true
+          _this.issetButton = true
+         })
+   },
+    computed:{
+       getAllCount(){
+            return  this.$store.getters.getAllCount;
+       },
+        car() {
+            return this.$store.state.car
+       },
+       
+    }
+}
 export default {
     name:"Footer",
     // mounted(){
@@ -46,6 +113,8 @@ export default {
     //         }
     // }
 };
+
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
 </script>
 
 <style scoped>
@@ -53,7 +122,7 @@ export default {
     z-index: 99;
     box-sizing: border-box;
     width: 100%;
-    height: .46rem;
+    height: .48rem;
     padding: 0 11px;
     background: #fff;
     position: fixed;
@@ -74,7 +143,27 @@ export default {
     font-size:.13rem;
     position: relative;
 }
-.footer-in a:active span {
+
+.footer-in .list b {
+      position: absolute;
+    right: 19px;
+<<<<<<< HEAD
+    top: 0px;
+=======
+    top: 5px;
+>>>>>>> 03ce1c4789de67a25aaeb4a612be86a64d409de3
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    font-size: .12rem;
+    line-height: 14px;
+    font-weight: 700;
+    font-family: Arial;
+    background: #fb3d3d;
+    color: #fff;
+}
+.footer-in a.router-link-active span {   
     color: #11b57c;
 }
 .footer-in a  .icon1{
@@ -97,19 +186,19 @@ export default {
    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAABICAYAAACQnynWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFCMkIzMENEQzc1MjExRTY4MkEzQ0M3RTBEQTA4QjBGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFCMkIzMENFQzc1MjExRTY4MkEzQ0M3RTBEQTA4QjBGIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUIyQjMwQ0JDNzUyMTFFNjgyQTNDQzdFMERBMDhCMEYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUIyQjMwQ0NDNzUyMTFFNjgyQTNDQzdFMERBMDhCMEYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz64HMn/AAAGTklEQVR42uxd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) 50% no-repeat;
    background-size: 100% 100%;
 }
-.footer-in a .icon1 :active{
+.footer-in a.router-link-active .icon1{
     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAABICAYAAACQnynWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkMxRDk5MzhEQzc1MTExRTY5RUMyOEY2NkVDNEFERkI3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkMxRDk5MzhFQzc1MTExRTY5RUMyOEY2NkVDNEFERkI3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QzFEOTkzOEJDNzUxMTFFNjlFQzI4RjY2RUM0QURGQjciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QzFEOTkzOENDNzUxMTFFNjlFQzI4RjY2RUM0QURGQjciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4JIQGLAAADEUlEQVR42uydO2gUQRzG5zQaBeVUxFdAjCEQFIOFnm/kMIVFxCckoGBAC5sUKQwIsTGJoIKFjYWiYHG+G4MPRFRExVK0sEhAsVNBBEUsxPGb2/8l5+Ukl7292Z3d7yM/9vYek7lfdnf+u8xdUlprxYSTKVRA+ZTP2E1dtQ1khgfyy8LQ8f+lHlvX+Z+S23r8/fl1Xf412ntNvtXRdSXruuh28WO6qN2xxwr9+qePE70Hybf2AW75POzY6/NOMAQ+e9uv+gTugHaX3lOdY+IbQQ6sL7l/AdghPAf7wUdu+cElA16WEV+azfK8VZQfTPaBp2BRhc9vAM9AlvKry1FwHcyc5OvmgPugg/Inn2ngAjhdRT/rwVXQQ/mVJw3ugcMBtJUCZ4UU5U9c0bwAbQG32yN7QT3ll4+pZF6BlTVqv0PGgTTlj69oHkvNXstkpRJqoHwvx8ANHxWN37TKucCKJMs3Fc1FcDKEwXCpnA1vSaL8uXL8PRRyHx6CvUmS3yi7/bYIHPJmyElcdxLkb5CKpiVCg/1UcA6csnn4sy2/01JF4ze94AqYHjf5pqLJyW4e5RwAd8HsOMg3W9HlkCoav2mTc4HFLss31cQD0KXcy2opClpclN8knc8qd7NMedeZNrokf1MEKxq/mQcegV0uyO+Uzs5X8Ym57HELHImqfDOYHnekovF7LnAe9AdVOAQlv1DRnHCoovGbPnBJedelQpdvjonm+shBlZyY6s3ME5oVmvzM8GCTDKxbVfKyHTxJD/UttC5/3chgoaJpVsnNGlNO4w/QbHvLz8WsovGb5XI5wqr8X/Q+mj++ysNqPxZUwRRxUx30OzxFvBfLM0q5OUV8SQzOcGsSzs8PMZRP+ZTPUD7lM5RP+QzlUz5D+ZTPUD7lM5RP+QzlUz5D+ZTPUD7lM5RP+ZTPxFP+b8cdaZflv3Fc/juX5Zup5B8cFT8Cbros/yfYDb46Jv4L2KNqOBXe1oD7Wnmf4rgNfkRc+ndwDawFb2v5i2x+l/J75X2PGiNJ8X+msM6nfIbyE5O/AgwA/S4YOQ0Rim0AAAAASUVORK5CYII=) 50% no-repeat;
     background-size: 100% 100%;
 }
-.footer-in a .icon2:active{
+.footer-in a.router-link-active .icon2{
     background:url(//img07.yiguoimg.com/e/web/170110/00583/164146/nav_classify_active.png) 50% no-repeat;
     background-size: 100% 100%;
 }
-.footer-in a.icon4:active{
+.footer-in a.router-link-active .icon4{
     background:url(//img07.yiguoimg.com/e/web/170110/00583/164146/nav_list_active.png) 50% no-repeat;
     background-size: 100% 100%;
 }
-.footer-in a .icon5:active{
+.footer-in a.router-link-active .icon5{
     background:url(//img05.yiguoimg.com/e/web/170110/00583/164146/nav_user_active.png) 50% no-repeat;
     background-size: 100% 100%;
 }
@@ -119,11 +208,11 @@ export default {
     left:.21rem;
     width: .3rem;
     height: .21rem;
-    top:3px;
+    top:6px;
 }
 .footer-in a  span{
     position: relative;
-    margin-top:.25rem;
+    margin-top:.27rem;
     display: inline-block;
 }
 </style>

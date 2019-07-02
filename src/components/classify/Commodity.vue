@@ -1,9 +1,18 @@
 <template>
     <ul>
         <li>
-            <div>
-                <a href="">
-                    <!--<img src="../../../public/img/L1.jpg" alt="LAL">-->
+            <div
+                    v-for="(item,goodshowIndex) in goodsShow"
+                    v-if="navIndex===goodshowIndex"
+            >
+                <a href=""
+                   v-for="itemS in item.list"
+                >
+                    <img
+                            :src="itemS.img"
+                            alt=""
+                    >
+                    {{itemS.imgName}}
                 </a>
             </div>
         </li>
@@ -12,7 +21,11 @@
 
 <script>
     export default {
-        name: "Commodity"
+        name: "Commodity",
+        data() {
+            return {}
+        },
+        props: ['goodsShow', 'navIndex']
     }
 </script>
 

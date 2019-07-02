@@ -1,6 +1,6 @@
 <template>
     <div class="order">
-        <ul class="order-content">
+        <ul class="order-Content">
             <router-link v-for="(item,index) in list"
             tag="li"
             :to="item.path">
@@ -38,18 +38,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .order{
     width: 100%;
     background: #ffffff;
     height: .4rem
 }
-.order .order-content{
+.order .order-Content{
     display: flex;
-    justify-content: space-around;
+    justify-Content: space-around;
     align-items: center;
 }
-.order .order-content li{
+.order .order-Content li{
     display: block;
     flex: 1;
     text-align: center;
@@ -61,7 +61,7 @@ export default {
     line-height: .4rem;
     overflow: hidden;
 }
-.order .order-content li i{
+.order .order-Content li i{
    font-style: normal;
    display: block;
 }

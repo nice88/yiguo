@@ -9,7 +9,7 @@
                 <span class="btn">登录/注册</span>
             </div>
             <router-link  class="set"
-            to='/set'
+            to='/sett'
             tag='span'>
                 <img :src="item.btnsrc" alt="" >
             </router-link>

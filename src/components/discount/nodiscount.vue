@@ -24,7 +24,7 @@ export default {
     margin: 0 auto;
 }
 .nodiscount p{
-    font-size: 15px;
+    font-size: 13px;
     color: #808080;
     text-align: center;
     padding-top: 15px;
