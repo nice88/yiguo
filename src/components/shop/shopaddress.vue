@@ -100,7 +100,8 @@ export default {
           png:
             "https://img13.yiguoimg.com/d/items/2017/171009/9288713737184073_300.jpg"
         }
-      ]
+      ],
+      value: ""
     };
   },
   methods: {
