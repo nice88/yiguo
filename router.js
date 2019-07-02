@@ -5,16 +5,10 @@ import Index from './views/Home'
 import Shop from './views/Shop'
 import Noshop from './views/Noshop'
 import Shopaddress from './components/shop/shopaddress'
-//支付方式
-import Lcheckstand from './views/Lcheckstand'
 import Receivinggoods from './components/shop/receivinggoods'
 import Region from './components/shop/region'
 import Product from './views/Afruits.vue'
-import Free from './views/Afree.vue'
-import News from './views/Anews.vue'
-import Food from './views/Afood.vue'
-
-// 我的开始
+// 我的
 import Mine from './views/Mine'
 import Login from './views/Login'
 import Register from './views/Register'
@@ -23,7 +17,7 @@ import OrderAll from './components/order/orderAll.vue'
 import OrderPay from './components/order/orderPay.vue'
 import OrderGet from './components/order/orderGet.vue'
 import OrderSay from './components/order/orderSay.vue'
-import SetPage from './components/set/sett.vue'
+import Set from './components/set/set.vue'
 import Acount from './components/acount/acount.vue'
 import Discount from './views/Discount.vue'
 import DiscountAll from './components/discount/discountAll.vue'
@@ -31,8 +25,7 @@ import DiscountUse from './components/discount/discountUse.vue'
 import DiscountOverdue from './components/discount/discountOverdue.vue'
 import Helpcenter from './components/helpcenter/helpcenter.vue'
 import Return from './components/return/return.vue'
-import Addaddress from'./views/Maddresspage.vue'
-// 我的结束
+
 Vue.use(Router)
 
 export default new Router({
@@ -64,11 +57,6 @@ export default new Router({
       component: Shopaddress
     },
     {
-
-      path: "/checkstand",
-      component: Lcheckstand
-    },
-    {
       path: "/region",
       component: Region
     },
@@ -80,19 +68,8 @@ export default new Router({
       path: '/product',
       component: Product
     },
-    {
-      path: '/free',
-      component: Free
-    },
-    {
-      path: '/news',
-      component: News
-    },
-    {
-      path: '/food',
-      component: Food
-    },
-    // 我的开始
+
+// 我的
 
     {
       path: '/mine',
@@ -127,8 +104,8 @@ export default new Router({
       component: OrderSay
     },
     {
-      path: '/Sett',
-      component: SetPage
+      path: '/set',
+      component: Set
     },
     {
       path: '/acount',
@@ -157,11 +134,6 @@ export default new Router({
     {
       path: '/return',
       component: Return
-    },
-    {
-      path: '/addaddress',
-      component: Addaddress
     }
-    // 我的结束
   ]
 })

@@ -1,7 +1,9 @@
 <template>
-    <div>
+    <div class="order">
         <Orderbar></Orderbar>
-        <Noneorder></Noneorder>
+        <div class="order-contnent">
+            <Noneorder></Noneorder>
+        </div>
     </div>
 </template>
 
@@ -19,5 +21,15 @@ export default {
 </script>
 
 <style>
-
+.order{
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+}
+.order-content{
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex: 1;
+    width: 100%
+}
 </style>

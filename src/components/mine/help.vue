@@ -38,7 +38,7 @@ export default {
                  {
                     icon:"https://img07.yiguoimg.com/d/web/181029/00591/155051/address.png",
                     tit:"收货地址",
-                    path:'/'
+                    path:'/addaddress'
                 },
                  {
                     icon:"https://img06.yiguoimg.com/d/web/181029/00591/155051/help.png",
@@ -53,12 +53,12 @@ export default {
                  {
                     icon:"https://img06.yiguoimg.com/d/web/181121/00591/143839/account-icon.png",
                     tit:"账户余额",
-                    path:'/'
+                    path:'/acount'
                 },
                  {
                     icon:"https://img07.yiguoimg.com/d/web/181029/00591/155051/service.png",
                     tit:"在线客服",
-                    path:'/set'
+                    path:'/sett'
                 }
             ]
         }

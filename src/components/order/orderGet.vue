@@ -1,11 +1,15 @@
 <template>
-    <div>
+    <div class="order">
         <orderbar></orderbar>
-        <Noneorder></Noneorder>
+        <div class="order-content">
+            <!-- <Noneorder></Noneorder> -->
+            <Noneorder></Noneorder>
+        </div>
     </div>
 </template>
 
 <script>
+//    import Havediscount from"../discount/havediscount"
    import Orderbar from"../common/orderbar" 
    import Noneorder from"./noneorder"
 export default {
@@ -13,11 +17,12 @@ export default {
     name:'orderGet',
     components:{
         Orderbar,
-        Noneorder
+        Noneorder,
+        // Havediscount
     }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

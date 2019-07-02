@@ -1,11 +1,15 @@
 <template>
-    
+    <Convert></Convert>
 </template>
 
 <script>
-    import convert from"../"
-export default {
-    name:'convert'
+    import Convert from"../components/convert/"
+    export default {
+    name:'convert',
+    components:{
+        Convert
+    }
+    
 }
 </script>
 
