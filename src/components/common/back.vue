@@ -1,9 +1,9 @@
 <template>
 	<div>
 		<span @click="back()" class="iconfont icon-triangle-l"></span>
-		<router-link to="/City"><span class="iconfont icon-location">北京</span></router-link>
+		<router-link to="/City"><span class="iconfont icon-location"> {{$store.state.city.nm}}</span></router-link>
 		<router-link to="/yiguo"><span class="iconfont icon-fangzi"></span></router-link>
-		<router-link to="/shop"><span class="iconfont icon-icon"></span></router-link>
+		<router-link to="/shop"><span class="iconfont icon-icon"><b>{{this.$store.getters['city/getAllCount']}}</b></span></router-link>
 		<span class="iconfont icon-xiangshangjiantou" v-show="goTopShow" @click="goTop"></span>
 	</div>
 </template>
@@ -66,9 +66,24 @@ export default{
 </script>
 
 <style scoped>
-.icon-triangle-l{position: fixed;left: .08rem;top: .08rem;background: #2b0f0e;color: white;width: .3rem;height: .33rem;border-radius: .2rem;line-height: .33rem;text-align: center;}
-.icon-location{position: fixed;right: .08rem;top: .08rem;background: #2b0f0e;color: white;width: .6rem;height: .35rem;border-radius: .2rem;line-height: .35rem;text-align: center;font-size: .1rem;}
+.icon-triangle-l{position: fixed;left: .08rem;top: .08rem;background: #2b0f0e;color: white;width: .3rem;height: .33rem;border-radius: .2rem;line-height: .33rem;text-align: center;z-index: 2;}
+.icon-location{position: fixed;right: .08rem;top: .08rem;background: #2b0f0e;color: white;width: .6rem;height: .35rem;border-radius: .2rem;line-height: .35rem;text-align: center;font-size: .1rem;z-index: 2;}
 .icon-fangzi{position: fixed;left: .16rem;bottom: .16rem;background: #2b0f0e;color: white;width: .4rem;height: .4rem;border-radius: .2rem;line-height: .4rem;text-align: center;z-index: 2;}
 .icon-icon{position: fixed;left: .64rem;bottom: .16rem;background: #2b0f0e;color: white;width: .4rem;height: .4rem;border-radius: .2rem;line-height: .4rem;text-align: center;z-index: 2;}
 .icon-xiangshangjiantou{position: fixed;right: .16rem;bottom: .16rem;background: white;color: #b6b4b4;width: .4rem;height: .4rem;border-radius: .2rem;line-height: .4rem;text-align: center;font-size: .2rem;z-index: 1;}
+ b {
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  font-size: 0.12rem;
+  line-height: 17px;
+  font-weight: 700;
+  font-family: Arial;
+  background: #fb3d3d;
+  color: #fff;
+}
 </style>

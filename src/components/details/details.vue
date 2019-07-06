@@ -1,7 +1,7 @@
 <template>
     <div class="D-details">
         <!--轮播图-->
-        <yg-details-wheel/>
+        <yg-details-wheel :banner="dataInfo.detail_img_url"/>
         <!--标签-->
         <yg-details-label/>
         <!--退货-->
@@ -17,7 +17,9 @@
         <yg-details-evaluate />
         <!--查看-->
         <div class="look">
-            <a href="#"><button>查看图文详情</button></a>
+            <a href="https://h5common.yiguo.com/imagesTextDetails.html?commodityId=fe6783f0-e1aa-4655-9986-8a899d8f9e3b&appName=3000025">
+                <button>查看图文详情</button>
+            </a>
         </div>
         <!--footer-->
         <yg-details-footer></yg-details-footer>
@@ -35,6 +37,11 @@
 	import footer from "./footer"
     export default {
         name: "details.vue",
+        data(){
+            return{
+                dataInfo:""
+            }
+        },
         components:{
             "yg-details-wheel":Wheel,
 			"yg-details-label":label,
@@ -44,45 +51,22 @@
 			"yg-details-place":place,
 			"yg-details-evaluate":evaluate,
 			"yg-details-footer":footer,
-        }
+        },
+        // created(){
+        //     this.$axios({
+        //         mothed:"get",
+        //         url:"http://10.35.162.101:8003/detail/1/"
+        //     }).then((retruned)=>{
+        //         this.dataInfo = retruned.data.data.data_wheel
+        //         console.log(retruned)
+        //     })
+        // }
     }
+
 </script>
 
 <style scoped>
-    /*@charset "utf-8";*/
-    /*!* CSS Document *!*/
-    /*body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, td, input, select, option,*/
-    /*textarea {*/
-        /*margin: 0;*/
-        /*padding: 0;*/
-    /*}*/
 
-    /*body {*/
-        /*font-family: "微软雅黑";*/
-    /*}*/
-
-    /*html {*/
-        /*font-size: 26.67vw;*/
-
-    /*}*/
-    /*ul,*/
-    /*ol {*/
-        /*list-style: none;*/
-    /*}*/
-
-    /*a {*/
-        /*text-decoration: none;*/
-    /*}*/
-
-    /*img {*/
-        /*border: none;*/
-        /*display: block;*/
-    /*}*/
-
-    /** {*/
-        /*margin: 0;*/
-        /*padding: 0;*/
-    /*}*/
     /*轮播图*/
     .lubo{
         position:relative;

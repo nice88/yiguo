@@ -11,7 +11,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 	/*规格*/
 	.guige{
 	    width:100%;

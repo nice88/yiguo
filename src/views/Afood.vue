@@ -6,16 +6,16 @@
 			<div class="two">
 				<img src="https://img14.yiguoimg.com/d/items/2019/190304/9288737493493348_1125x160.jpg">
 			</div>
-			<div class="sell" v-for="item in sell" :key="item.id" @click="to()">
-				<div class="simg">
-					<img :src="item.src">
+			<div class="sell" v-for="item in sell" :key="item.id" >
+				<div class="simg" @click="to(item.id)">
+					<img :src="item.goods_img">
 				</div>
 				<div class="detail">
-					<h3>{{item.nm}}</h3>
-					<p>{{item.del}}</p>
-					<i class="reduce">{{item.redu}}</i>
-					<p class="price"><span class="money">¥{{item.pri}}</span>{{item.weight}}</p>
-					<b class="add"><span class="iconfont icon-gouwuchekong"></span></b>
+					<h3>{{item.name}}</h3>
+					<p>{{item.detail_name}}</p>
+					<!-- <i class="reduce">{{item.redu}}</i> -->
+					<p class="price"><span class="money">¥{{item.price}}</span></p>
+					<b class="add"><span class="iconfont icon-gouwuchekong" @click="addToShopCar(item.id,item.price)"></span></b>
 				</div>
 			</div>
 		</div>
@@ -26,12 +26,12 @@
 			<ul class="box">
 				<li v-for="item in delicious" :key="item.id" @click="to()">
 					<div class="bpic">
-						<img :src="item.src">
-						<span>{{item.del}}</span>
+						<img :src="item.goods_img">
+						<span v-if="item.detail_name">{{item.detail_name}}</span>
 					</div>
 					<div class="bdel">
-						<p class="name">{{item.nm}}</p>
-						<p class="bpri"><b>¥{{item.pri}}</b>{{item.weight}}</p>
+						<p class="name">{{item.name}}</p>
+						<p class="bpri"><b>¥{{item.price}}</b></p>
 						<router-link to="/shop"><span class="iconfont icon-gouwuche"></span></router-link>
 					</div>
 				</li>
@@ -54,84 +54,39 @@ export default{
 	},
 	data(){
 		return{
-			sell:[
-				{
-					id:'01',
-					src:'https://img13.yiguoimg.com/d/items/2019/190428/9288737869342364_300.jpg',
-					del:'晶莹饱满 入口鲜甜多汁',
-					nm:'海南妃子笑荔枝1kg',
-					redu:'直降29.1元',
-					pri:'29.9',
-					weight:'/1kg'
-				},
-				{
-					id:'02',
-					src:'https://img13.yiguoimg.com/d/items/2019/190428/9288737869342364_300.jpg',
-					del:'晶莹饱满 入口鲜甜多汁',
-					nm:'海南妃子笑荔枝1kg',
-					redu:'直降29.1元',
-					pri:'29.9',
-					weight:'/1kg'
-				},
-				{
-					id:'03',
-					src:'https://img13.yiguoimg.com/d/items/2019/190428/9288737869342364_300.jpg',
-					del:'晶莹饱满 入口鲜甜多汁',
-					nm:'海南妃子笑荔枝1kg',
-					redu:'直降29.1元',
-					pri:'29.9',
-					weight:'/1kg'
-				},
-				{
-					id:'04',
-					src:'https://img13.yiguoimg.com/d/items/2019/190428/9288737869342364_300.jpg',
-					del:'晶莹饱满 入口鲜甜多汁',
-					nm:'海南妃子笑荔枝1kg',
-					redu:'直降29.1元',
-					pri:'29.9',
-					weight:'/1kg'
-				}
-			],
-			delicious:[
-				{
-					id:'01',
-					src:'https://img11.yiguoimg.com/d/items/2019/190424/9288737842669208_300.jpg',
-					del:'满188赠进口水',
-					nm:'云南精品夏黑葡萄1kg',
-					pri:'49.9',
-					weight:'/1kg'
-				},
-				{
-					id:'02',
-					src:'https://img11.yiguoimg.com/d/items/2019/190424/9288737842669208_300.jpg',
-					del:'满188赠进口水',
-					nm:'云南精品夏黑葡萄1kg',
-					pri:'49.9',
-					weight:'/1kg'
-				},
-				{
-					id:'03',
-					src:'https://img11.yiguoimg.com/d/items/2019/190424/9288737842669208_300.jpg',
-					del:'满188赠进口水',
-					nm:'云南精品夏黑葡萄1kg',
-					pri:'49.9',
-					weight:'/1kg'
-				},
-				{
-					id:'04',
-					src:'https://img11.yiguoimg.com/d/items/2019/190424/9288737842669208_300.jpg',
-					del:'满188赠进口水',
-					nm:'云南精品夏黑葡萄1kg',
-					pri:'49.9',
-					weight:'/1kg'
-				}
-			]
+			sell:[],
+			delicious:[],
+			selectedCount: 1 //保存用户选中的数量
 		}
 	},
 	methods:{
-		to(){
-			this.$router.push('/details');
-		}
+		to(id){
+			this.$router.push({
+				path:'/details',
+				query:{id:id}
+			})
+		},
+		addToShopCar(id,price) {
+      //{id:商品的id,count:要购买的数量，price:商品的价格}
+      //拼接出一个要保存到store 中car数组中 商品信息对象
+      var goodsinfo = {
+        id: id,
+        count: this.selectedCount,
+        price: price
+      };
+     
+      //调用store中的mutations来将商品加入购物车中
+      this.$store.commit("city/addToCar", goodsinfo);
+    	},
+	},
+	mounted(){
+		this.axios.get('http://121.199.63.71:8003/home/hot/').then((res)=>{
+			var msg = res.data.msg;
+			if (msg === 'ok') {
+				this.sell = res.data.datas;
+				this.delicious = res.data.datas_o
+			}
+		})
 	}
 };
 </script>
@@ -156,7 +111,7 @@ export default{
 .box>li{width: 50%;height: 2.18rem;float: left;padding: .08rem .15rem 0;}
 .bpic{width: 1.5rem;height: 1.5rem;position: relative;}
 .bpic>img{width: 1.5rem;height: 1.5rem;}
-.bpic>span{height: .16rem;line-height: .16rem;color: #45b575;border: 1px solid #45b575;border-radius: .16rem;font-size: .04rem;padding: 0 .05rem;position: absolute;bottom: 0;left: .26rem;}
+.bpic>span{height: .16rem;line-height: .16rem;color: #45b575;border: 1px solid #45b575;border-radius: .16rem;font-size: .04rem;padding: 0 .05rem;position: absolute;bottom: 0;left: .15rem;width: 1.2rem;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-align: center;}
 .bdel{font-size: .04rem;margin-top: .06rem;position: relative;}
 .name{width: 100%;text-align: center;color: #333;}
 .bpri{color: #8d8a8a;margin-top: .06rem;}

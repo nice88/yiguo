@@ -1,7 +1,7 @@
 <template>
   <div class="regio">
     <div class="region" v-for="(item,index) in region" :key="index">
-      <div class="region1">
+      <div class="region1" @click.prevent="maxing">
         <p>
           {{item.xingmi}}
           <span>{{item.plone}}</span>
@@ -10,23 +10,22 @@
           <i class="type">{{item.home}}</i>
           {{item.dizhi}}
         </div>
-        <div class="region3">
-          <input type="checkbox">
-        </div>
       </div>
-
+      <div class="region3">
+        <input type="radio" name="a" />
+      </div>
       <div class="region4">
         <div class="region5">
-          <input type="checkbox">
+          <input type="radio" name="b" />
           <span>{{item.moren}}</span>
         </div>
         <div class="region6">
-          <button>编辑</button>
+          <button @click.prevent="jingjin">编辑</button>
           <button>删除</button>
         </div>
       </div>
     </div>
-    <div class="region7" @click.preven="ma">+增加收货地址</div>
+    <div class="region7" @click.prevent="ma">+增加收货地址</div>
   </div>
 </template>
 <script>
@@ -48,41 +47,6 @@ export default {
           home: "家庭",
           dizhi: "北京海淀区123",
           moren: "默认地址"
-        },
-        {
-          xingmi: "马兴",
-          plone: "1345678912",
-          home: "家庭",
-          dizhi: "北京海淀区123",
-          moren: "默认地址"
-        },
-        {
-          xingmi: "马兴",
-          plone: "1345678912",
-          home: "家庭",
-          dizhi: "北京海淀区123",
-          moren: "默认地址"
-        },
-        {
-          xingmi: "马兴",
-          plone: "1345678912",
-          home: "家庭",
-          dizhi: "北京海淀区123",
-          moren: "默认地址"
-        },
-        {
-          xingmi: "马兴",
-          plone: "1345678912",
-          home: "家庭",
-          dizhi: "北京海淀区123",
-          moren: "默认地址"
-        },
-        {
-          xingmi: "马兴",
-          plone: "1345678912",
-          home: "家庭",
-          dizhi: "北京海淀区123",
-          moren: "默认地址"
         }
       ]
     };
@@ -90,7 +54,34 @@ export default {
   methods: {
     ma() {
       this.$router.push({ path: "/receivinggoods" });
+    },
+    maxing() {
+      this.$router.push({ path: "/shopaddress" });
+    },
+    jingjin() {
+      this.$router.push({ path: "/receivinggoods" });
     }
+    // created() {
+    //   let tar = this;
+    //   let token = common.getCookie("token");
+    //   this.$axios({
+    //     method: "get",
+    //     url: "" + token
+    //   })
+    //     .then(function(response) {
+    //       if (response.data.code == 200) {
+    //         for (let key in response.data.data) {
+    //           tar.$set(tar.management, "key", response.data.data[key]);
+    //         }
+    //         tar.management = response.data.data;
+
+    //         console.log(tar.management);
+    //       }
+    //     })
+    //     .catch(function(error) {
+    //       console.log(error);
+    //     });
+    // }
   }
 };
 </script>
@@ -105,13 +96,13 @@ export default {
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   background: #fff;
+  position: relative;
 }
 .region1 {
-  width: 100%;
+  width: 90%;
   font-size: 0.14rem;
   padding-top: 0.25rem;
   float: left;
-  position: relative;
 }
 .region1 p {
   font-size: 0.14rem;
@@ -134,7 +125,7 @@ export default {
 }
 .region3 input {
   position: absolute;
-  right: 15px;
+  right: 10px;
   top: 30px;
   width: 20px;
   height: 20px;

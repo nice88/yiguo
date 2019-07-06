@@ -2,8 +2,16 @@
     <ul>
         <li>
             <div>
-                <a href="">
-                    <!--<img src="../../../public/img/L1.jpg" alt="LAL">-->
+                <a
+                        @click="getItem(item.child_id)"
+                        v-for="(item,index) in navIndex"
+                        :key="index"
+                >
+                    <img
+                            :src="item.child_img"
+                            alt=""
+                    >
+                    {{item.child_name}}
                 </a>
             </div>
         </li>
@@ -12,7 +20,23 @@
 
 <script>
     export default {
-        name: "Commodity"
+        name: "Commodity",
+        data() {
+            return {}
+        },
+        props: ['navIndex'],
+        methods:{
+            getItem(id){
+                this.$router.push({
+                    path:"/class",
+                    query:{
+                        id:id
+                    }
+                })
+            }
+
+        }
+
     }
 </script>
 

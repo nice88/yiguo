@@ -1,23 +1,28 @@
 <template>
-    <div>
+    <div class="order">
         <Orderbar></Orderbar>
-        <Noneorder></Noneorder>
+        <div class="order-content">
+            <Noneorder></Noneorder>
+            <!-- <Havediscount></Havediscount> -->
+        </div>
     </div>
 </template>
 
 <script> 
    import Noneorder from"./noneorder"
    import Orderbar from"../common/orderbar"
+//    import Havediscount from"../discount/havediscount"
 export default {
 
     name:'orderAll',
     components:{
         Orderbar,
-        Noneorder
-    }
+        Noneorder,
+        // Havediscount
+    } 
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

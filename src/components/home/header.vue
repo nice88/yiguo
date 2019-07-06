@@ -4,10 +4,10 @@
             <a href="javascript:;" class="btn"></a>
             <span class="btn-search">请输入商品名称</span>
         </div>
-        <a href="" class="first-screen-adress">
-            北京
+        <router-link class="first-screen-adress" to="./City">
+           {{$store.state.city.nm}}
             <i class="arrow"></i>
-        </a>
+        </router-link>
     </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 .header{
-    z-index: 100;
+    z-index:30;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
@@ -27,6 +27,9 @@ export default {
     background: -webkit-gradient(linear,left top, right top,from(#39da85),to(#01b27a));
     background: linear-gradient(90deg,#39da85,#01b27a);
     padding-top: 4px;
+    position: fixed;
+    left:0;
+    top:0;   
 }
 .first-screen-search {
    position: relative;

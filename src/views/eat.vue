@@ -67,7 +67,7 @@
 
             pageDate(){
 
-                fetch('http://10.35.162.101:8003/home/eat/', {
+                fetch('http://121.199.63.71:8003/home/eat/', {
                     method: 'get'
                 }).then(response => response.json()).then(data => {
                     console.log(data);

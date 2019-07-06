@@ -1,5 +1,6 @@
 <template>
-	<div class="new">
+	<Loading v-if="show"></Loading>
+	<div class="new" v-else>
 		<Active><img src="https://img09.yiguoimg.com/d/items/2019/190329/9288737670506109_1125x652.jpg"></Active>
 		<div class="shops">
 			<div class="two">
@@ -7,13 +8,13 @@
 			</div>
 			<div class="shop">
 				<ul>
-					<li v-for="item in everyday" :key='item.id' @click="to()">
-						<div class="simg">
-							<img :src="item.src">
-							<p><span>{{item.act}}</span></p>
+					<li v-for="item in everyday" :key='item.id'>
+						<div class="simg" @click="to(item.id)">
+							<img :src="item.goods_img">
+							<!-- <p><span>{{item.act}}</span></p> -->
 						</div>
-						<p class="name">{{item.nm}}</p>
-						<p class="price">￥<b>{{item.pri}}</b>.00
+						<p class="name">{{item.name}}</p>
+						<p class="price">￥<b>{{item.price}}</b>
 							<span class="iconfont icon-gouwuchekong"></span>
 						</p>
 					</li>
@@ -26,13 +27,13 @@
 			</div>
 			<div class="shop">
 				<ul>
-					<li v-for="item in everyday" :key='item.id' @click="to()">
+					<li v-for="item in more" :key='item.id' @click="to()">
 						<div class="simg">
-							<img :src="item.src">
-							<p><span>{{item.act}}</span></p>
+							<img :src="item.goods_img">
+							<!-- <p><span>{{item.act}}</span></p> -->
 						</div>
-						<p class="name">{{item.nm}}</p>
-						<p class="price">￥<b>{{item.pri}}</b>.00
+						<p class="name">{{item.name}}</p>
+						<p class="price">￥<b>{{item.price}}</b>
 							<span class="iconfont icon-gouwuchekong"></span>
 						</p>
 					</li>
@@ -57,98 +58,28 @@ export default{
 	},
 	data(){
 		return{
-			everyday:[
-				{
-					id:'01',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'02',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'03',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'04',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'05',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'06',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'07',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'08',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'09',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'10',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'11',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-				{
-					id:'12',
-					src:'https://img12.yiguoimg.com/d/items/2019/190424/9288737839359640_300.jpg',
-					act:'第2件0元',
-					nm:'盛燕天下即食燕窝35g*2',
-					pri:'79'
-				},
-			]
+			everyday:[],
+			more:[],
+			show:true
 		}
 	},
 	methods:{
-		to(){
-			this.$router.push('/details');
+		to(id){
+			this.$router.push({
+				path:'/details',
+				query:{id:id}
+			})
 		}
+	},
+	mounted(){
+		this.axios.get('http://121.199.63.71:8003/home/new/').then((res)=>{
+			var msg = res.data.msg;
+			if (msg === 'ok') {
+				this.show = false;
+				this.everyday = res.data.datas;
+				this.more = res.data.datas_o
+			}
+		})
 	}
 };
 </script>

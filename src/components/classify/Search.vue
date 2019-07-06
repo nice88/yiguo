@@ -2,16 +2,39 @@
     <div class="search">
         <form action="." class="search-left">
             <i class="iconss"></i>
-            <input class="searchs" type="search" placeholder="请输入商品名称">
+            <input class="searchs" type="search" placeholder="请输入商品名称" v-model="apps">
         </form>
-        <span>搜索</span>
+        <span @click="getItem(apps)">搜索</span>
     </div>
-
 </template>
 
 <script>
     export default {
-        name: "Search"
+        name: "Search",
+        data(){
+            return{
+                apps:"",
+            }
+        },
+        methods: {
+            getItem(id){
+                this.$router.push({
+                    path:"/asearch",
+                    query:{
+                        id:id
+                    }
+                });
+                console.log(id)
+            }
+            // handleseach(info){
+            //     fetch('http://121.199.63.71:8003/search/?q=' + info,{
+            //         method: 'get'
+            //     }).then(response => response.json()).then(data => {
+            //         this.category = data.data;
+            //         console.log(this.category)
+            //     })
+            // },
+        }
     }
 </script>
 

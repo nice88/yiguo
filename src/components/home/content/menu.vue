@@ -1,69 +1,73 @@
 <template>
     <div class="first-screen-menu clear">
-        <router-link class="one" v-for="item in list" :to="item.path">
+        <a class="one" v-for="item in data_nav" :key="item.trackid" @click="handleToProduct(item.trackid)">
             <i>
-                <img :src="item.listImg" alt="">
+                <img :src="item.img" alt="">
             </i>
-            <p class="one-title">{{item.listText}}</p>
+            <p class="one-title">{{item.name}}</p>
+        </a>
+        <router-link class="one" to='/free'>
+            <i>
+                <img src="https://img10.yiguoimg.com/d/items/2019/190621/9570213294450389_144.png?w=144&h=144" alt="">
+            </i>
+            <p class="one-title">免费兑奖</p>
         </router-link>
+        <router-link class="one" to='/member'>
+            <i>
+                <img src="https://img09.yiguoimg.com/d/items/2019/190621/9570213294483157_144.png?w=144&h=144" alt="">
+            </i>
+            <p class="one-title">会员福利</p>
+        </router-link>
+        <a class="one" >
+            <i>
+                <img src="https://img09.yiguoimg.com/d/items/2019/190621/9570213294548693_144.png?w=144&h=144" alt="">
+            </i>
+            <p class="one-title">银行活动</p>
+        </a>
+        <a class="one">
+            <i>
+                <img src="https://img11.yiguoimg.com/d/items/2019/190621/9570213294581461_144.png?w=144&h=144" alt="">
+            </i>
+            <p class="one-title">即烹美食</p>
+        </a>
     </div>
 </template>
 
 <script>
+
 export default {
     name:"Menu",
     data(){
         return{
-            list:[
-                {   
-                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
-                    listText:"精品水果",
-                    path:'/product'
-                },
-                 {
-                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
-                    listText:"精品水果",
-                     path:'/product'
-                },
-                 {
-                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
-                    listText:"精品水果",
-                     path:'/product'
-                },
-                 {
-                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
-                    listText:"精品水果",
-                     path:'/product'
-                },
-                 {
-                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
-                    listText:"精品水果",
-                     path:'/free'
-                },
-                 {
-                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
-                    listText:"精品水果",
-                     path:'/free'
-                },
-                 {
-                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
-                    listText:"精品水果",
-                     path:'/free'
-                },
-                 {
-                    listImg:"https://img09.yiguoimg.com/d/items/2019/190621/9570213294319317_144.png?w=144&h=144",
-                    listText:"精品水果",
-                     path:'/free'
-                }
-            ]
+      
+            data_nav:[]
         }
+    },
+    mounted(){
+     this.axios.get("http://121.199.63.71:8003/home/index/").then((res)=>{
+            var msg = res.data.msg;
+            if(msg==="ok"){
+                this.data_nav = res.data.data_nav;
+               
+            }
+        });
+    },
+    methods:{
+        handleToProduct(id){
+              this.$router.push({
+                path:"/product",
+                query:{
+                    id:id
+                }
+            })
+        }
+      
     }
 }
 </script>
 
 <style scoped>
 .first-screen-menu{
-     background-image: url(http://img09.yiguoimg.com/d/items/2019/190614/9288738255218382_1125x480.jpg?w=1125&h=480);
      background-size: 100% 100%;
      padding: 10px 15px;
      overflow: hidden;
@@ -79,7 +83,9 @@ export default {
     text-align: center;
 }
 .first-screen-menu a img{
-    width:100%;
+    width: .61rem;
+    height:.61rem;
+    margin-left: 11px;
 }
 .first-screen-menu a p{
     font-size: .14rem;

@@ -33,7 +33,7 @@
             <span class="searchBtn"><i></i>查询历史信息</span>
         </div>
         <div class="bottom">
-            <img style="width:220px " src="../../assets/logo.5f4d53ff.png" alt="">
+            <img style="width:220px " src="../../assets/img/mineimg/logo.5f4d53ff.png" alt="">
             <p>
                 客服电话：021-22303535
             </p>
@@ -159,7 +159,7 @@ form {
     display:inline-block;
     width: .2rem;    
     height: .2rem; 
-    background: url(../../assets/sousuo.png) -4px -2px;
+    background: url(../../assets/img/mineimg/sousuo.png) -4px -2px;
     margin-right: 5px;
 }
 .bottom{

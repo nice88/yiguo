@@ -1,96 +1,168 @@
 <template>
-  <div class="Shop">
-    <div class="Sfirst">
-      全场满100元包邮,还差
-      <span>100</span>元包邮
-    </div>
-    <div class="shopp">
-      <div class="Ssecond" v-for="(item,index) in shop">
-        <div class="roadio">
-          <input type="checkbox">
+  <div>
+    <div class="Shop">
+      <div class="Sfirst">全场满100元包邮,包邮</div>
+      <div class="shopp">
+        <div class="Ssecond" v-for="(item,index) in cart_datas.cart_datas" :key="index">
+          <div class="roadio">
+            <input
+              type="checkbox"
+              class="checkItem"
+              :id="'check'+index"
+              name="checkbox"
+              v-model="checkeds[index]"
+            />
+          </div>
+          <img :src="item.goods_detail.goods_img" />
+          <div class="Ssecond1">
+            <h2>{{item.goods_detail.name}}</h2>
+            <p>
+              ￥
+              <b>{{item.goods_detail.price}}</b>
+            </p>
+          </div>
+          <div class="rightBox">
+            <div class="del">
+              <i class="iconfont" @click="del(index)">&#xe644;</i>
+            </div>
+            <div class="num">
+              <span @click="minius(index)">-</span>
+              <input type="text" :value="item.c_goods_num" />
+              <span @click="add(index)">+</span>
+            </div>
+          </div>
         </div>
-        <img :src="item.png">
-        <div class="Ssecond1">
-          <h2>{{item.span}}</h2>
+      </div>
+      <shopping :recommends="recommends"></shopping>
+      <div class="shop-right">
+        <div class="shop-rigth1">
+          <input type="checkbox" @click="checkAll($event)" id="quan" />
+          <span>全选</span>
+        </div>
+        <div class="shop-right2">
           <p>
-            ￥
-            <b>{{item.qian}}</b>
+            合计(不含运费)：
+            <b>{{sum}}</b>
           </p>
+          <span>已优惠: ￥0.00</span>
         </div>
-        <div class="rightBox">
-          <div class="del">
-            <i class="iconfont" v-html="item.ico"></i>
-          </div>
-          <div class="num">
-            <span>-</span>
-            <input type="text" value="1">
-            <span>+</span>
-          </div>
+        <div class="shop-rigth3">
+          <a href="#" @click.prevent="dianji">{{"去结算("+number+")"}}</a>
         </div>
       </div>
     </div>
-    <shopping></shopping>
-    <div class="shop-right">
-      <div class="shop-rigth1">
-        <input type="checkbox">
-        <span>全选</span>
-      </div>
-      <div class="shop-right2">
-        <p>
-          合计(不含运费)：
-          <b class="red">￥59.70</b>
-        </p>
-        <span>已优惠: ￥0.00</span>
-      </div>
-      <div class="shop-rigth3">
-        <a href="#" @click.prevent="dianji">去结算(1)</a>
-      </div>
-    </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import shopping from "../components/shop/shopping";
+import Footer from "../components/common/footer";
+
 export default {
   name: "Shop",
   components: {
-    shopping
+    shopping,
+    Footer
   },
   data() {
     return {
-      shop: [
-        {
-          png:
-            "https://img11.yiguoimg.com/d/items/2019/190424/9288737842669208_300.jpg",
-          span: "云南精品夏黑葡萄1kg",
-          qian: "49.90",
-          ico: "&#xe644"
-        },
-        {
-          png:
-            "https://img11.yiguoimg.com/d/items/2019/190424/9288737842669208_300.jpg",
-          span: "云南精品",
-          qian: "1000",
-          ico: "&#xe644"
-        }
-      ]
+      cart_datas: [],
+      recommends: [],
+      checkeds: [],
     };
   },
+  created() {
+    this.pageDate();
+  },
   methods: {
+    pageDate() {
+     
+      var myToken= window.localStorage.getItem("token");
+      fetch(
+        "http://121.199.63.71:8003/cart/show/"+"?token="+myToken,
+        // "http://121.199.63.71:8003/cart/show/?token=cea0ff7430f14e6d8ddd79d41776eae9",
+        {
+          "Content-Type": "application/josp;charset=UTF-8",
+          method: "post"
+        }
+      )
+        .then(response => response.json())
+        .then(data => {
+          this.cart_datas = data;
+          this.recommends = data.recommends;
+       
+        });
+    },
     dianji() {
       this.$router.push({ path: "/shopaddress" });
+      
+    },
+    // 删除,
+    del(index) {
+      this.cart_datas.cart_datas.splice(index, 1); //只需要从数组中移除对应项.
+    },
+    // 增加
+    add(index) {
+      this.cart_datas.cart_datas[index].c_goods_num++;
+    },
+    // 减少
+    minius(index) {
+      if (this.cart_datas.cart_datas[index].c_goods_num > 1) {
+        //这里添加一个限制，最少要有一个商品
+        this.cart_datas.cart_datas[index].c_goods_num--;
+      }
+    },
+    checkAll(e) {
+      // 点击全选事件函数
+      var checkObj = document.querySelectorAll(".checkItem"); // 获取所有checkbox项
+      if (e.target.checked) {
+        // 判定全选checkbox的勾选状态
+        for (var i = 0; i < checkObj.length; i++) {
+          if (!checkObj[i].checked) {
+            // 将未勾选的checkbox选项push到绑定数组中
+            this.checkeds.push(checkObj[i].value);
+          }
+        }
+      } else {
+        // 如果是去掉全选则清空checkbox选项绑定数组
+        this.checkeds = [];
+      }
+    }
+  },
+  computed: {
+    sum: function() {
+      let sum = 0;
+      for (let i in this.cart_datas.cart_datas) {
+        if (this.checkeds[i]) {
+          console.log(111);
+          sum += parseInt(
+            this.cart_datas.cart_datas[i].goods_detail.price *
+              this.cart_datas.cart_datas[i].c_goods_num
+          );
+        }
+      }
+      return sum;
+    },
+    number: function() {
+      let number = 0;
+      for (let i in this.cart_datas.cart_datas) {
+        if (this.checkeds[i]) {
+          number += parseInt(this.cart_datas.cart_datas[i].c_goods_num);
+        }
+      }
+      return number;
     }
   }
 };
 </script>
-
 <style scoped>
 .Shop {
   background: #f4f4f4;
 }
 .rightBox {
   float: right;
-  width: 1.1rem;
+  width: 1rem;
   height: 1rem;
 }
 .Sfirst {
@@ -115,7 +187,7 @@ export default {
 }
 .Ssecond {
   width: 100%;
-  height: 1rem;
+  height: 1.1rem;
   position: relative;
   border-bottom: 1px solid #ddd;
   border-top: 1px solid #ddd;
@@ -133,11 +205,12 @@ export default {
   width: 0.9rem;
   height: 0.8rem;
   display: block;
-  margin-left: 0.4rem;
+  margin-left: 0.3rem;
   margin-top: 0.13rem;
   float: left;
 }
 .Ssecond .Ssecond1 {
+  width: 155px;
   float: left;
   margin-top: 0.13rem;
 }
@@ -160,9 +233,11 @@ export default {
   top: 0.22rem;
 }
 .Ssecond .del i {
-  font-size: 0.15rem;
-  color: #666;
-  display: block;
+    position: absolute;
+    font-size: 0.15rem;
+    color: #666;
+    display: block;
+    right: 10px;
 }
 .Ssecond .num {
   width: 0.79rem;

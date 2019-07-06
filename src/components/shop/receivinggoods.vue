@@ -4,39 +4,39 @@
       <ul>
         <li>
           <span>收件人姓名：</span>
-          <input type="text">
+          <input type="text" v-model="name" />
         </li>
         <li>
           <span>手机号：</span>
-          <input type="text">
+          <input type="text" v-model="plone" />
         </li>
         <li>
           <span>请选择省：</span>
-          <input type="text">
+          <input type="text" v-model="sheng" />
           <p></p>
         </li>
         <li>
           <span>请选择市：</span>
-          <input type="text">
+          <input type="text" v-model="shi" />
           <p></p>
         </li>
         <li>
           <span>请选择区：</span>
-          <input type="text">
+          <input type="text" v-model="qu" />
           <p></p>
         </li>
         <li>
           <span>详细地址：</span>
-          <input type="text">
+          <input type="text" v-model="address" />
         </li>
         <li>
           <span>地址类型：</span>
           <div class="right">
             <span>
-              <input type="radio" name="a">公司
+              <input type="radio" name="a" checked />公司
             </span>
             <span>
-              <input type="radio" name="a">家庭
+              <input type="radio" name="a" />家庭
             </span>
           </div>
         </li>
@@ -44,24 +44,61 @@
     </div>
     <div class="receivinggoods-middle">
       <span>设置默认地址：</span>
-      <img class="img" src="../../assets/img/shopimg/off.png" alt>
+      <div class="rightt">
+        <mt-switch v-model="value"></mt-switch>
+      </div>
     </div>
     <div class="receivinggoods-bottom">
-      <button @click.preven="xing">保存并返回</button>
+      <button @click.prevent="xing">保存并返回</button>
+      <!-- @click.prevent="onSave(val)" -->
     </div>
   </div>
 </template>
 <script>
 export default {
   name: "receivinggoods",
+  data() {
+    return {
+      value: false
+    };
+  },
   methods: {
     xing() {
       this.$router.push({ path: "/region" });
     }
+    // onSave(val) {
+    //   let str = val.sheng + val.shi + val.qu + val.address;
+    //   console.log(str);
+    //   let tar = this;
+    //   let token = common.getCookie("token");
+    //   this.$axios({
+    //     method: "post",
+    //     url: "" + token,
+    //     data: {
+    //       rec_name: val.name,
+    //       rec_phone: val.plone,
+    //       rec_addr: str
+    //     }
+    //   });
+
+    //<>
+    // .then(function(response) {
+    //   if (response.data.code == 200) {
+    //     tar.$router.push("/addressManagement");
+    //   }
+    // })
+    // .catch(function(error) {
+    //   console.log(error);
+    // });
   }
 };
 </script>
 <style  scoped>
+.receivinggoods-middle .rightt {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+}
 .receivinggood {
   background: #f4f4f4;
   width: 100%;
@@ -112,8 +149,7 @@ export default {
   width: 15px;
   height: 15px;
   float: left;
-  margin-top: 15px;
-  margin-right: 10px;
+  margin: 15px 10px 0 16px;
 }
 .receivinggoods-middle {
   width: 100%;

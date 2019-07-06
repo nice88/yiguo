@@ -2,7 +2,7 @@
   <div class="shopaddress">
     <div class="address" @click.prevent="nihao">
       <div class="address1">
-        <img src="../../assets/img/shopimg/add4.png" alt>
+        <img src="../../assets/img/shopimg/add4.png" alt />
         <p>添加收货地址</p>
         <span></span>
       </div>
@@ -10,17 +10,19 @@
     <div class="address2">
       <p class="num">
         共
-        <span>2</span>件商品
+        <span>123</span>件商品
       </p>
       <div class="img">
-        <img :src="(item.png)" alt v-for="(item,index) in img">
+        <a href="#" v-for="(item,index) in img" :key="index">
+          <img :src="(item.png)" />
+        </a>
       </div>
     </div>
     <div class="address3">
       <div class="address-top">
         <span>配送日期</span>
         <p>
-          收货地址不支持配送
+          即可下单,即刻发货
           <span class="span"></span>
         </p>
       </div>
@@ -33,7 +35,7 @@
       </div>
       <div class="addressmd">
         <span class="word">留言：</span>
-        <input type="text" placeholder="如有特殊要求，请在此留言">
+        <input type="text" placeholder="如有特殊要求，请在此留言" />
       </div>
     </div>
     <div class="address4">
@@ -44,11 +46,11 @@
       <div class="div">
         <div class="address51">
           <span>商品合计</span>
-          <p>￥1000</p>
+          <p>￥123</p>
         </div>
         <div class="address51">
           <span>运费</span>
-          <img src="../../assets/img/shopimg/mianyou.png" alt>
+          <img src="../../assets/img/shopimg/mianyou.png" alt />
           <p>￥0.00</p>
         </div>
       </div>
@@ -60,10 +62,12 @@
     <div class="address4">
       <span>U币抵现</span>
       <span class="span">
-        可用100U币抵￥1000
+        可用100U币抵￥100
         <i>￥0</i>
       </span>
-      <img class="img" src="../../assets/img/shopimg/off.png" alt>
+      <div class="right">
+        <mt-switch v-model="value"></mt-switch>
+      </div>
     </div>
     <div class="address4 bottom">
       <span>现金券</span>
@@ -74,7 +78,7 @@
         应付金额：
         <span class="red">¥414.00</span>
       </p>
-      <a href="javascript:;">结算</a>
+      <a href="javascript" @click.prevent="kang">结算</a>
     </div>
   </div>
 </template>
@@ -96,12 +100,33 @@ export default {
           png:
             "https://img13.yiguoimg.com/d/items/2017/171009/9288713737184073_300.jpg"
         }
-      ]
+      ],
+      value: false
     };
+  },
+  created() {
+    this.pageDate();
   },
   methods: {
     nihao() {
       this.$router.push({ path: "/region" });
+    },
+    kang() {
+      this.$router.push({ path: "/Lcheckstand" });
+    },
+    pageDate() {
+      fetch(
+        "http://121.199.63.71:8003/cart/show/?token=54da18428f7e4aaabbb3632c245b07dd",
+        {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          method: "post"
+        }
+      )
+        .then(response => response.json())
+        .then(data => {
+          this.cart_datas = data;
+          console.log(this.cart_datas)
+        });
     }
   }
 };
@@ -337,12 +362,10 @@ export default {
   font-style: normal;
   vertical-align: baseline;
 }
-.address4 .img {
-  width: 40px;
-  height: 30px;
+.address4 .right {
   position: absolute;
-  right: 20px;
-  top: 10px;
+  right: 10px;
+  top: 6px;
 }
 .address6 {
   position: fixed;

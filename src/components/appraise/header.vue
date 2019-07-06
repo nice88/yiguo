@@ -17,37 +17,58 @@
 		<!--nav-->
 		<div class="nav">
 			<div class="first line" href="javascript:;">
-				<div class="imgWrapper">
-					<img src="//img06.yiguoimg.com/d/web/180119/01641/141347/check1.png" alt="">
+				<div class="imgWrapper" @click="changeCheckState">
+					<img src="//img06.yiguoimg.com/d/web/180119/01641/141347/check1.png" alt="" v-if="!checkState">
+					<img src="//img06.yiguoimg.com/d/web/180508/01316/175209/check2.png" alt="" v-if="checkState">
 				</div>
 				<span>只看有内容</span>
 			</div>
-			<div class="lineItem itemcontent line">
-				<span>全部</span>
-				<span>1072</span>
+			<div class="lineItem itemcontent line" v-for="(item,index) in appraise" @click="check(index)"
+			:class="{lineItem_active:classIndex===index}">
+					<span>{{item.appraise_name}}</span>
+					<span>{{item.appraise_num}}</span>
 			</div>
-			<div class="lineItem itemcontent line">
-				<span>好评</span>
-				<span>1071</span>
-			</div>
-			<div class="lineItem itemcontent line">
-				<span>中评</span>
-				<span>1</span>
-			</div>
-			<div class="lineItem itemcontent">
-				<span>差评</span>
-				<span>0</span>
-			</div>
+
 		</div>
 	</div>
 </template>
 
 <script>
 	export default {
-	    name: "header",
-	    components:{
-			
-	    }
+	    name: "Header",
+		data(){
+	    	return {
+	    		appraise:[
+					{
+						appraise_name:"全部",
+						appraise_num:"1072"
+					},
+					{
+						appraise_name:"好评",
+						appraise_num:"1071"
+					},
+					{
+						appraise_name:"中评",
+						appraise_num:"1"
+					},
+					{
+						appraise_name:"差评",
+						appraise_num:"0"
+					}
+				],
+				classIndex:0,
+				checkState:false
+			}
+		},
+		methods:{
+			check(index){
+				this.classIndex = index
+				this.$emit('checkedIndex',index)
+			},
+			changeCheckState(){
+				this.checkState = !this.checkState
+			}
+		}
 	}
 </script>
 
@@ -162,6 +183,9 @@
 	}
 	.lineItem span{
 		font-size:.12rem
+	}
+	.lineItem_active span{
+		color:#d3b162;
 	}
 	.itemcontent{
 		display:flex;

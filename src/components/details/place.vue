@@ -18,7 +18,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 	/*位置*/
 	.position{
 	    width:100%;

@@ -1,7 +1,9 @@
 <template>
-    <div>
+    <div class="order">
         <Orderbar></Orderbar>
-        <Noneorder></Noneorder>
+        <div class="order-contnent">
+            <Noneorder></Noneorder>
+        </div>
     </div>
 </template>
 
@@ -18,6 +20,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

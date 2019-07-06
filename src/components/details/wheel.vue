@@ -2,7 +2,7 @@
     <div class="lubo">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="item in list"><a href="#"><img :src="item.img" alt=""></a></div>
+                <div class="swiper-slide" v-for="item in wheelList"><a href="#"><img :src="item" alt=""></a></div>
 
             </div>
             <!--如果需要分页器-->
@@ -15,25 +15,30 @@
         name:"Wheel",
         data(){
             return{
-                list:[
-                    {
-                        id:"2",
-                        img:"img/D-appen.jpg"
-                    },
-                    {
-                        id:"3",
-                        img:"img/D-appen2.jpg"
-                    },
-                    {
-                        id:"24",
-                        img:"img/D-appen3.jpg"
-                    },
-                    {
-                        id:"26",
-                        img:"img/D-appen2.jpg"
-                    },
-                ]
+
+                wheelList:[]
             }
+        },
+        created(){
+            this.pageDate()
+        },
+        methods: {
+            pageDate() {
+                fetch(
+                    "http://121.199.63.71:8003/detail/"+this.$route.query.id+"/",
+                    {
+                        method: "get"
+                    }
+                )
+                    .then(response => response.json())
+                    .then(data => {
+
+                        var data_wheel = data.data_wheel[0];
+                        var wheel = data_wheel.goods_wheel_img
+                        this.wheelList = wheel.split("#")
+                    });
+            },
+
         }
     }
 </script>

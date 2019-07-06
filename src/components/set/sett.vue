@@ -6,11 +6,9 @@
         <ul>
             <li v-for="item in list" style="padding-left:10px">{{item.message}}<i></i></li>
         </ul>
-        <router-link to="/Mine"
-        tag="div"
-         class="over">
-            <span>退出登录</span>
-        </router-link>
+        <div class="over">
+            <span @click="handelOut()">退出登录</span>
+        </div> 
     </div>
 </template>
 
@@ -40,6 +38,13 @@ export default {
                 }
             ]
         }
+    },
+    methods:{
+        handelOut(){
+            
+        localStorage.removeItem('token');
+        this.$router.push({path:'/register'});
+    }
     }
 }
 </script>

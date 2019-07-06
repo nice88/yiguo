@@ -2,12 +2,12 @@
     <div class="category">
         <ul>
             <li
-                    :class="activeClass == index ? 'active':''"
+                    v-for="(item,index) in data"
                     :key="index"
-                    @click="getItem(index)"
-                    v-for="(item,index) in mes"
+                    @click="getItem(item.category_id,index)"
+                    :class="isactive===index?'active':''"
             >
-                    {{item.font}}
+                    {{item.category_name}}
             </li>
         </ul>
     </div>
@@ -16,15 +16,17 @@
 <script>
     export default {
         name: "category",
-        props:["mes"],
+        props:["data"],
         data(){
             return{
-                activeClass: -1
+                isactive:0,
+
             }
         },
         methods:{
-            getItem(index){
-                this.activeClass = index;
+            getItem(freeId,index){
+                this.$emit('info',freeId);
+                this.isactive=index;
             }
         }
     }

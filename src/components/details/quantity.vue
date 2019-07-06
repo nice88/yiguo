@@ -2,9 +2,9 @@
     <div class="shuliang">
        <p><span>数量</span></p>&nbsp;
        <p class="addreduce">
-           <span class="reduce">-</span>
-           <span  class="num">0</span>
-           <span class="add">+</span>
+           <span class="reduce" @click="reduce">-</span>
+           <span class="num" v-model="num">{{num}}</span>
+           <span class="add" @click="add">+</span>
        </p>
    </div>
 </template>
@@ -12,10 +12,27 @@
 <script>
     export default {
         name: "quantity",
+        data(){
+            return{
+                num:1
+            }
+        },
+        methods:{
+            add(){
+                this.num = this.num+1
+            },
+            reduce(){
+                if (this.num>0) {
+                    this.num = this.num-1;
+                }else{
+                    this.num = 0;
+                }
+            }
+        }
     }
 </script>
 
-<style>
+<style scoped>
 	
 	/*数量*/
 	.shuliang{

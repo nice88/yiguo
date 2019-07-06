@@ -2,25 +2,41 @@
 	 <div class="footer">
 	    <div class="footer-one">
 	        <div class="foot-one">
-	            <a href="#"><img src="img/sy.png"/><span>首页</span></a>
+				<ul>
+					<router-link to="/yiguo"
+					tag="li">
+						<img src="img/sy.png"/>
+						<span>首页</span>
+					</router-link>
+				</ul>
 	        </div>
 	        <div class="foot-two">
-	            <a href="#"> <img src="img/gwc.png"/><span>购物车</span></a>
+				<ul>
+					<router-link to="/shop"
+					tag="li">
+						<img src="img/gwc.png"/>
+						<span>购物车</span>
+					</router-link>
+				</ul>
 	        </div>
 	    </div>
 	    <div class="footer-two">
-	        <a href="#"><button>加入购物车</button></a>
+			<!--<ul>-->
+				<!--<router-link to="/shop"-->
+							 <!--:tag="li"></router-link>-->
+				<!--<button>加入购物车</button>-->
+			<!--</ul>-->
+	        <a href="#"><button  @click="addToShopCar(items.id,items.price)">加入购物车</button></a>
 	    </div>
 	</div>
 </template>
-
 <script>
 	 export default {
-	    name: "footer",
+	    name: "Footer",
 	}
 </script>
 
-<style>
+<style scoped>
 	 /*footer*/
 	.footer{
 	    width:100%;
@@ -43,33 +59,45 @@
 	.foot-one{
 	    width:.3rem;
 	    height:.3rem;
-	    background:blue;
+	    /*background:blue;*/
 	    position:absolute;
 	    top:.15rem;
 	    left:.1rem;
+	}
+	.foot-one a{
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
 	}
 	.foot-one img{
 	    width:.3rem;
 	    height:.3rem;
 	}
 	.foot-one span{
-	    font-size:.2rem;
+	    font-size:.1rem;
 	    color:#8d8c8b;
 	}
 	.foot-two{
 	    width:.3rem;
 	    height:.3rem;
-	    background:blue;
+	    /*background:blue;*/
 	    position:absolute;
 	    top:.15rem;
 	    left:.6rem;
 	}
+	 .foot-two a{
+		 display:flex;
+		 flex-direction:column;
+		 justify-content:center;
+		 align-items:center;
+	 }
 	.foot-two img{
 	    width:.3rem;
 	    height:.3rem;
 	}
 	.foot-two span{
-	    font-size:.2rem;
+	    font-size:.1rem;
 	    color:#8d8c8b;
 	}
 	.footer-two{
@@ -81,7 +109,7 @@
 		height:100%;
 
 	}
-	.footer-two button{
+	.footer-two  button{
 	    width:100%;
 		height:100%;
 		display:block;

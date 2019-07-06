@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="suspend-top" @click='goTop' ref="btn">
+    <div class="suspend-top" v-show="goTopShow" @click="goTop">
         <img src="//img07.yiguoimg.com/e/web/161230/00584/172344/top.png" alt="">
     </div>
 </div>
@@ -10,44 +10,56 @@
 let timer =null;
 export default {
     name:"SupTop",
-     data () {
-        return {
-            isTop: true
-        }
-  },
-  mounted () {
-    this.needScroll()
-  },
-  methods: {
-    needScroll () {
-      let clientHeight = document.documentElement.clientHeight
-      let obtn = this.$refs.btn
-      window.onscroll = function () {
-        let osTop = document.documentElement.scrollTop || document.body.scrollTop
-        console.log(osTop);
-        if (osTop >= clientHeight) {
-          obtn.style.display = 'block'
-        } else {
-          obtn.style.display = 'none'
-        }
-        if (!this.isTop) {
-          clearInterval(timer)
-        }
-        this.isTop = false
-      }
-    },
-    goTop () {
-      timer = setInterval(function () {
-        let osTop = document.documentElement.scrollTop || document.body.scrollTop
-        let ispeed = Math.floor(-osTop / 5)
-        document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed
-        this.isTop = true
-        if (osTop === 0) {
-          clearInterval(timer)
-        }
-      }, 30)
-    }
-  }
+     data(){
+		return{
+			scrollTop: "",
+      		goTopShow: false,
+		}
+	},
+
+methods:{
+	
+		handleScroll() {
+	      this.scrollTop =
+	        window.pageYOffset ||
+	        document.documentElement.scrollTop ||
+	        document.body.scrollTop;
+	      if (this.scrollTop > 100) {
+	        this.goTopShow = true;
+	      }
+	    },
+	    goTop() {
+	      let timer = null,
+	        _that = this;
+	      cancelAnimationFrame(timer);
+	      timer = requestAnimationFrame(function fn() {
+	        if (_that.scrollTop > 0) {
+	          _that.scrollTop -= 50;
+	          document.body.scrollTop = document.documentElement.scrollTop =
+	            _that.scrollTop;
+	          timer = requestAnimationFrame(fn);
+	        } else {
+	          cancelAnimationFrame(timer);
+	          _that.goTopShow = false;
+	        }
+	      });
+	    }
+	},
+	watch: {
+	    scrollTop:function(val){
+	      if (this.scrollTop > 100) {
+	        this.goTopShow = true;
+	      } else {
+	        this.goTopShow = false;
+	      }
+	    }
+	},
+	mounted() {
+	    window.addEventListener("scroll", this.handleScroll);
+	},
+	destroyed() {
+	    window.removeEventListener("scroll", this.handleScroll);
+	}
 
 
 }

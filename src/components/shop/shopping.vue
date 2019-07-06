@@ -1,19 +1,19 @@
 <template>
   <div class="shopping">
     <h2>猜你喜欢</h2>
-    <div class="shop-bottom" v-for="(item,index) in into">
+    <div class="shop-bottom" v-for="(item,index) in recommends" :key="index">
       <div class="shop-img">
-        <img :src="item.img">
+        <img :src="item.goods_img" />
       </div>
       <div class="text">
-        <h2>{{item.h2}}</h2>
+        <h2>{{item.name}}</h2>
         <p>
           ￥
-          <b>{{item.qian}}</b>
+          <b>{{item.price}}</b>
         </p>
       </div>
       <div class="btn">
-        <img src="../../assets/img/shopimg/add.png" alt>
+        <img src="../../assets/img/shopimg/add.png" alt />
       </div>
     </div>
   </div>
@@ -21,40 +21,42 @@
 <script>
 export default {
   name: "shopping",
+  props: ["recommends"],
   data() {
     return {
-      into: [
-        {
-          img:
-            "https://img14.yiguoimg.com/d/items/2017/171130/9288715872871294_300.jpg",
-          h2: "原膳南美白虾仁（中）250g",
-          qian: "32.90"
-        },
-        {
-          img:
-            "https://img14.yiguoimg.com/d/items/2017/171130/9288715872871294_300.jpg",
-          h2: "原膳南美白虾仁（中）250g",
-          qian: "32.90"
-        },
-        {
-          img:
-            "https://img14.yiguoimg.com/d/items/2017/171130/9288715872871294_300.jpg",
-          h2: "原膳南美白虾仁（中）250",
-          qian: "32.90"
-        },
-        {
-          img:
-            "https://img14.yiguoimg.com/d/items/2017/171130/9288715872871294_300.jpg",
-          h2: "原膳南美白虾仁（中）250g",
-          qian: "32.90"
-        }
-      ]
+      // into: [
+      //   {
+      //     img:
+      //       "https://img14.yiguoimg.com/d/items/2017/171130/9288715872871294_300.jpg",
+      //     h2: "原膳南美白虾仁（中）250g",
+      //     qian: "32.90"
+      //   },
+      //   {
+      //     img:
+      //       "https://img14.yiguoimg.com/d/items/2017/171130/9288715872871294_300.jpg",
+      //     h2: "原膳南美白虾仁（中）250g",
+      //     qian: "32.90"
+      //   },
+      //   {
+      //     img:
+      //       "https://img14.yiguoimg.com/d/items/2017/171130/9288715872871294_300.jpg",
+      //     h2: "原膳南美白虾仁（中）250",
+      //     qian: "32.90"
+      //   },
+      //   {
+      //     img:
+      //       "https://img14.yiguoimg.com/d/items/2017/171130/9288715872871294_300.jpg",
+      //     h2: "原膳南美白虾仁（中）250g",
+      //     qian: "32.90"
+      //   }
+      // ]
     };
   }
 };
 </script>
 <style scoped>
 .shopping {
+  width: 100%;
   background: #fff;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -70,7 +72,7 @@ export default {
 }
 .shop-bottom {
   width: 50%;
-  height: 2.08rem;
+  height: 2.2rem;
   background: #fff;
   float: left;
 }

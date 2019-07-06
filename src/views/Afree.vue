@@ -21,13 +21,13 @@
 			</div>
 			<div class="card">
 				<ul>
-					<li v-for="item in del" :key="item.id" @click="to()">
+					<li v-for="item in del" :key="item.id" @click="to(item.id)">
 						<div class="prod">
 							<div class="proimg">
-								<img :src="item.src">
+								<img :src="item.goods_img">
 							</div>
-							<p class="pronm">{{item.nm}}</p>
-							<p class="propri"><b>¥{{item.price}}</b>/{{item.num}}</p>
+							<p class="pronm">{{item.child_name}}</p>
+							<p class="propri"><b>¥{{item.price}}</b></p>
 							<div class="procar"><span class="iconfont icon-gouwuchekong"></span></div>
 						</div>
 					</li>
@@ -70,42 +70,28 @@ export default{
 					nine:'https://img13.yiguoimg.com/d/items/2019/190514/9288738001561262_1125x233.jpg'
 				},
 			],
-			del:[
-				{
-					id:'02',
-					src:'https://img10.yiguoimg.com/d/items/2018/181120/9288734300677492_300.jpg',
-					nm:'300元储值卡',
-					price:'300',
-					num:'一张'
-				},
-				{
-					id:'03',
-					src:'https://img10.yiguoimg.com/d/items/2018/181120/9288734300677492_300.jpg',
-					nm:'3aaaa',
-					price:'300',
-					num:'一张'
-				},
-				{
-					id:'04',
-					src:'https://img10.yiguoimg.com/d/items/2018/181120/9288734300677492_300.jpg',
-					nm:'3aaaa',
-					price:'300',
-					num:'一张'
-				},
-				{
-					id:'05',
-					src:'https://img10.yiguoimg.com/d/items/2018/181120/9288734300677492_300.jpg',
-					nm:'3aaaa',
-					price:'300',
-					num:'一张'
-				}
-			]
+			del:[]
 		}
 	},
 	methods:{
-		to(){
-			this.$router.push('/details');
+		to(id){
+			this.$router.push({
+				path:'/details',
+				query:{
+					id:id
+				}
+
+			}
+				);
 		}
+	},
+	mounted(){
+		this.axios.get('http://121.199.63.71:8003/home/card/').then((res)=>{
+			var msg = res.data.msg;
+			if (msg === 'ok') {
+				this.del = res.data.img_datas;
+			}
+		})
 	}
 };
 </script>

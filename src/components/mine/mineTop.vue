@@ -1,15 +1,15 @@
 <template>
     <div>
         <router-link class="header" v-for="item in list" 
-        :to="item.path"
+        :to="inputName.nickname?'/Mine':'/register'"
         tag="div">
             <img :src="item.bgsrc" alt="">
-            <div class="logo">
-                <img :src="item.logosrc" alt="">
-                <span class="btn">登录/注册</span>
+            <div class="logo" style="z-index:1000">
+                <img :src="item.logosrc" alt="" style="z-index:1001">
+                <span class="btn">{{(inputName.nickname)||("登录/注册")}}</span>
             </div>
             <router-link  class="set"
-            to='/set'
+            to='/sett'
             tag='span'>
                 <img :src="item.btnsrc" alt="" >
             </router-link>
@@ -25,13 +25,14 @@ export default {
             list:[
                 {
                     bgsrc:"https://img06.yiguoimg.com/d/web/180517/01262/143351/bgimg.jpg",
-                    logosrc:"https://img02.yiguo.com/e/web/150703/00781/140145/no-pic.jpg",
+                    logosrc:"http://img3.duitang.com/uploads/item/201501/13/20150113210041_stAN4.jpeg",
                     btnsrc:"https://img07.yiguoimg.com/d/web/180508/01319/184003/setting.png",
-                    path:'/login'
+                    // path:'/register'
                 }
             ]
         }
-    }
+    },
+    props: ['inputName']
 }
 </script>
 

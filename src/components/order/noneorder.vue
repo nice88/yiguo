@@ -12,7 +12,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.noneorder{
+    width: 100%;
+}
 .noneorder{
     padding-top: .9rem;
     position: relative;

@@ -1,7 +1,7 @@
 <template>
      <div class="box">
-        <p>新西兰Envy爱妃苹果4个180g以上/个</p>
-        <h5>高颜值又好吃得苹果</h5>
+        <p>{{data_wheel.name}}</p>
+        <h5>{{data_wheel.detail_name}}</h5>
         <div class="box-center">
             <!--<ul>-->
                 <!--<li>-->
@@ -13,15 +13,40 @@
                     <!--</div>-->
                 <!--</li>-->
             <!--</ul>-->
-            <span>￥58</span>
-            <span>产地：新西兰</span>
+            <span>￥{{data_wheel.price}}</span>
+            <span>{{data_wheel.pro_addr}}</span>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "label",
+        name: "Label",
+        data() {
+            return {
+                data_wheel: []
+
+            }
+
+        },
+
+        created() {
+            this.pageDate();
+        },
+        methods: {
+            pageDate() {
+                fetch(
+                    "http://121.199.63.71:8003/detail/"+this.$route.query.id+"/",
+                    {
+                        method: "get"
+                    }
+                )
+                    .then(response => response.json())
+                    .then(data => {
+                        this.data_wheel = data.data_wheel[0];
+                    });
+            },
+        }
     }
 </script>
 
@@ -29,6 +54,7 @@
 /*标签*/
     .box{
         width:100%;
+        height:100%;
     }
     .box p{
         font-size:.12rem;

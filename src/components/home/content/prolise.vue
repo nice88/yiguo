@@ -1,18 +1,18 @@
 <template>
     <div class="prolistBackground">
-        <div class="blockwrap" v-for="item in list">
+        <div class="blockwrap" v-for="item in list" :key="item.id">
             <div class="tt">
-                <h3>{{item.text}}</h3>
+                <h3>{{item.category_name}}</h3>
             </div>
             <ul class="twoproduct">
-                <li v-for="items in (item.Imgnext)">
+                <li v-for="items in (item.imglist)" :key="items.id">
                     <div class="proitem">
                         <div class="pic">
-                            <a href="#">
-                                <img :src="items.imgsmall" alt="">
+                            <a href="#" @click="handleToDetails(items.id)">
+                                <img :src="items.goods_img" alt="">
                             </a>
                             <div class="saletip">
-                                <span>{{items.priceDown}}</span>
+                                
                             </div>
                         </div>
                         <div class="info">
@@ -22,8 +22,8 @@
                                 </a>
                             </p>
                             <div class="price">
-                                <strong>{{items.price}}</strong>{{items.num}}
-                                <i class="price-addcart"></i>
+                                <strong>￥{{items.price}}</strong>
+                                <i class="price-addcart" @click="addToShopCar(items.id,items.price)"></i>
                             </div>
                         </div>
                     </div>
@@ -38,44 +38,40 @@ export default {
     name:"prolise",
     data(){
         return{
-            list:[
-            {
-                text:"水果楼层",
-                Imgnext:[
-                      {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228",
-                            num:"/4个"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228",
-                             num:"/4个"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228",
-                             num:"/4个"
-                        },
-                        {
-                            imgsmall:"https://img14.yiguoimg.com/d/items/2019/190408/9288737740596872_300.jpg",
-                            priceDown:"直降60元",
-                            name:"佳沛新西兰阳光金果",
-                            price:"¥228",
-                             num:"/4个"
-                        }
-
-                ]
-            }
-        ]
+            list:[],
+            selectedCount:1
         }
         
+    },
+     mounted(){
+     this.axios.get("http://121.199.63.71:8003/home/index/").then((res)=>{
+            var msg = res.data.msg;
+            if(msg==="ok"){
+                this.list = res.data.img_chosen_otherdata;
+            }
+        });
+    },
+    methods:{
+          handleToDetails(id){
+              this.$router.push({
+                path:"/details",
+                query:{
+                    id:id
+                }
+            })
+        },
+          addToShopCar(id,price) {
+      //{id:商品的id,count:要购买的数量，price:商品的价格}
+      //拼接出一个要保存到store 中car数组中 商品信息对象
+      var goodsinfo = {
+        id: id,
+        count: this.selectedCount,
+        price: price
+      };
+     
+      //调用store中的mutations来将商品加入购物车中
+      this.$store.commit("city/addToCar", goodsinfo);
+    	},
     }
 }
 </script>
@@ -122,6 +118,7 @@ export default {
 }
 .prolistBackground{
     width:100%;
+    padding-bottom: .47rem;
 }
 .prolistBackground .floor-img, .group-floor .floor-img img {
     width: 100%;
@@ -219,6 +216,10 @@ export default {
     font-size: 11px;
     display: inline-block;
     margin-left: 9px;
+        width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 

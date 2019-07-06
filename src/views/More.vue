@@ -3,13 +3,13 @@
         <div class="fixedOpt" id="fixedOpt">
             <div class="fixedOpt_l">
                <button class="btn">
-                   <i class="icon icon-back "></i>
+                   <i class="icon icon-back " @click="handleToBack" ></i>
                 </button>
             </div>
             <div class="fixedOpt_r">
                 <button class="btn c_txt">
                     <i class="icon icon-local"></i>
-                    <span>北京</span>   
+                    <span>{{$store.state.city.nm}}</span>   
                 </button>
             </div>
         </div>
@@ -20,8 +20,8 @@
                 </a>
             </div>
         </div>
-    <yg-more-prolise></yg-more-prolise>
-    <yg-more-fixedBar></yg-more-fixedBar>
+        <yg-more-prolise></yg-more-prolise>
+        <yg-more-fixedBar></yg-more-fixedBar>
     </div>
 </template>
 
@@ -58,6 +58,11 @@ export default {
         ]
       }
         
+    },
+    methods:{
+    handleToBack(){
+            this.$router.back();
+        }
     }
 }
 </script>

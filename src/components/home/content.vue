@@ -10,6 +10,7 @@
    <yg-content-clear></yg-content-clear>
    <yg-content-prolist></yg-content-prolist>
    <yg-content-prolise></yg-content-prolise>
+   <yg-content-backTop></yg-content-backTop>
 </div>   
 </template>
 
@@ -21,6 +22,7 @@ import Group from "./content/group";
 import Clear from "./content/clear";
 import Prolist from "./content/prolist"
 import Prolise from "./content/prolise"
+import backTop from '../common/supTop'
 
 export default {
     name:"Content",
@@ -31,7 +33,8 @@ export default {
         "yg-content-group":Group,
         "yg-content-clear":Clear,
         "yg-content-prolist":Prolist,
-        "yg-content-prolise":Prolise
+        "yg-content-prolise":Prolise,
+        "yg-content-backTop":backTop,
     },
     data(){
         return{
